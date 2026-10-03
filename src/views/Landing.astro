@@ -6,6 +6,7 @@ import FaqList from "../components/FaqList.astro";
 import { servicoPorId, sv, servicosEm } from "../data/servicos";
 import { faqLd, serviceLd, type Faq } from "../data/seo";
 import { site, waLink } from "../data/site";
+import { foco } from "../data/fotos";
 import { r, type Lang } from "../i18n/routes";
 
 type Tipo = "eletricista" | "cameras" | "temporada";
@@ -62,7 +63,7 @@ const C: Record<Tipo, Record<Lang, Conteudo>> = {
   },
   temporada: {
     pt: {
-      servico: "controle-de-acesso", imagem: "/img/ig/post6.jpg", chat: "acs_tipo",
+      servico: "controle-de-acesso", imagem: "/img/obras/fechadura.webp", chat: "acs_tipo",
       titulo: "Casa de temporada e Airbnb em Garopaba", h1: "Casa de temporada e Airbnb prontos para receber",
       descricao: "Pacote para casas de temporada e Airbnb em Garopaba, Praia do Rosa e Ferrugem: revisão elétrica, câmeras com acesso remoto, fechadura digital com senha por hóspede e iluminação externa.",
       intro: ["Você aluga sua casa por temporada ou no Airbnb? A gente deixa tudo pronto antes do hóspede chegar — e você acompanha de onde estiver.", "Um só fornecedor para elétrica, câmeras, fechadura digital e iluminação, com atendimento pelo WhatsApp."],
@@ -70,7 +71,7 @@ const C: Record<Tipo, Record<Lang, Conteudo>> = {
       faq: [{ q: "Consigo gerenciar a fechadura de longe?", a: "Sim. Com modelos por aplicativo você cria e apaga senhas de hóspedes pelo celular, de qualquer lugar." }, { q: "Vocês atendem chamados durante a temporada?", a: "Sim. Clientes que preparam a casa com a gente têm prioridade para atendimento no verão." }],
     },
     en: {
-      servico: "controle-de-acesso", imagem: "/img/ig/post6.jpg", chat: "acs_tipo",
+      servico: "controle-de-acesso", imagem: "/img/obras/fechadura.webp", chat: "acs_tipo",
       titulo: "Vacation rentals and Airbnb in Garopaba", h1: "Your vacation home ready for guests — managed from abroad",
       descricao: "Package for vacation rentals and Airbnb hosts in Garopaba, Praia do Rosa and Ferrugem: electrical check, cameras with remote access, smart locks with a code per guest and outdoor lighting. English-speaking team.",
       intro: ["Do you rent out your home in Garopaba on Airbnb or for the season, maybe while living abroad? We get everything ready before guests arrive — and you follow it all from wherever you are.", "One single contractor for electrical, cameras, smart locks and lighting, with English-speaking service on WhatsApp."],
@@ -78,7 +79,7 @@ const C: Record<Tipo, Record<Lang, Conteudo>> = {
       faq: [{ q: "Can I manage the lock from another country?", a: "Yes. With app-based models you create and delete guest codes on your phone from anywhere." }, { q: "Do you answer calls during high season?", a: "Yes. Clients who prepare their home with us get priority service during the summer." }],
     },
     es: {
-      servico: "controle-de-acesso", imagem: "/img/ig/post6.jpg", chat: "acs_tipo",
+      servico: "controle-de-acesso", imagem: "/img/obras/fechadura.webp", chat: "acs_tipo",
       titulo: "Casas de temporada y Airbnb en Garopaba", h1: "Tu casa de temporada lista para recibir — manejada desde tu país",
       descricao: "Paquete para casas de temporada y anfitriones de Airbnb en Garopaba, Praia do Rosa y Ferrugem: revisión eléctrica, cámaras con acceso remoto, cerradura digital con clave por huésped e iluminación exterior. Atención en español.",
       intro: ["¿Alquilas tu casa en Garopaba por temporada o en Airbnb, quizás viviendo en Argentina, Uruguay u otro país? Dejamos todo listo antes de que llegue el huésped — y tú lo sigues desde donde estés.", "Un solo proveedor para electricidad, cámaras, cerradura digital e iluminación, con atención en español por WhatsApp."],
@@ -114,7 +115,7 @@ const T = {
             <a class="btn btn-ghost btn-lg" href={waLink(`${T.ola} ${c.titulo.toLowerCase()}.`)} target="_blank" rel="noopener"><Icon name="whats" size={20} />WhatsApp</a>
           </div>
         </div>
-        <div class="svc-vis"><img src={c.imagem} alt={c.h1} width="900" height="1100"></div>
+        <div class="svc-vis"><img src={c.imagem} alt={c.h1} width="900" height="1100" style={foco(c.imagem)}></div>
       </div>
     </div>
   </section>

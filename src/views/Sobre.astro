@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Icon from "../components/Icon.astro";
 import { site, waLink, waPadrao } from "../data/site";
+import { foco } from "../data/fotos";
 import { r, type Lang } from "../i18n/routes";
 
 interface Props { lang: Lang }
@@ -53,7 +54,7 @@ const T = {
             <a class="btn btn-primary btn-lg" href={waLink(waPadrao[lang])} target="_blank" rel="noopener"><Icon name="whats" size={20} />{T.falar}</a>
           </div>
         </div>
-        <div class="svc-vis"><img src="/img/ig/post2.jpg" alt={T.alt} width="360" height="640"></div>
+        <div class="svc-vis svc-retrato"><img src="/img/obras/responsavel.webp" alt={T.alt} width="640" height="720" style={foco("/img/obras/responsavel.webp")}></div>
       </div>
     </div>
   </section>

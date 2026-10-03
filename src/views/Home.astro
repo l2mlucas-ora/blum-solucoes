@@ -6,6 +6,7 @@ import { servicosEm } from "../data/servicos";
 import { faqGeral } from "../data/faq";
 import { faqLd } from "../data/seo";
 import { site, whatsapp, waLink, waPadrao, anosDeMercado } from "../data/site";
+import { foco } from "../data/fotos";
 import { r, type Lang } from "../i18n/routes";
 
 interface Props { lang: Lang }
@@ -37,7 +38,7 @@ const T = {
       ["/img/obras/sanca-led.webp", "Sanca com iluminação indireta de LED", "Sanca com luz indireta"],
       ["/img/obras/eletroposto.webp", "Eletroposto com carregador de carro elétrico", "Eletroposto / carregador veicular"],
       ["/img/obras/camera-pergolado.webp", "Câmera de segurança Intelbras instalada em pergolado", "Câmeras Intelbras"],
-      ["/img/ig/post6.jpg", "Fechadura digital instalada em porta de madeira ripada", "Fechadura digital"],
+      ["/img/obras/fechadura.webp", "Fechadura digital instalada em porta de madeira ripada", "Fechadura digital"],
       ["/img/obras/camera-fachada.webp", "Câmera de segurança em fachada com caixa de passagem", "CFTV com acabamento"],
       ["/img/ig/post5.jpg", "Balizadores instalados em área externa", "Balizadores externos"],
     ],
@@ -71,7 +72,7 @@ const T = {
       ["/img/obras/sanca-led.webp", "Ceiling cove with indirect LED lighting", "Indirect cove lighting"],
       ["/img/obras/eletroposto.webp", "EV charging station", "EV charging station"],
       ["/img/obras/camera-pergolado.webp", "Intelbras security camera on a pergola", "Intelbras cameras"],
-      ["/img/ig/post6.jpg", "Smart lock on a slatted wooden door", "Smart lock"],
+      ["/img/obras/fechadura.webp", "Smart lock on a slatted wooden door", "Smart lock"],
       ["/img/obras/camera-fachada.webp", "Security camera on a facade with junction box", "Neatly finished CCTV"],
       ["/img/ig/post5.jpg", "Outdoor path lights", "Outdoor path lights"],
     ],
@@ -105,7 +106,7 @@ const T = {
       ["/img/obras/sanca-led.webp", "Garganta con iluminación indirecta LED", "Garganta con luz indirecta"],
       ["/img/obras/eletroposto.webp", "Electrolinera con cargador de auto eléctrico", "Cargador de auto eléctrico"],
       ["/img/obras/camera-pergolado.webp", "Cámara de seguridad Intelbras en pérgola", "Cámaras Intelbras"],
-      ["/img/ig/post6.jpg", "Cerradura digital en puerta de madera", "Cerradura digital"],
+      ["/img/obras/fechadura.webp", "Cerradura digital en puerta de madera", "Cerradura digital"],
       ["/img/obras/camera-fachada.webp", "Cámara de seguridad en fachada con caja de paso", "CCTV con buena terminación"],
       ["/img/ig/post5.jpg", "Balizas en área exterior", "Balizas exteriores"],
     ],
@@ -139,7 +140,7 @@ const T = {
         </ul>
       </div>
       <div class="hero-vis">
-        <img src="/img/obras/igreja-depois.webp" alt={T.badge} width="1136" height="1200" fetchpriority="high">
+        <img src="/img/obras/igreja-depois.webp" alt={T.badge} width="1136" height="1200" fetchpriority="high" style={foco("/img/obras/igreja-depois.webp")}>
         <div class="hero-badge"><span class="dot" aria-hidden="true"></span><span><b>{T.badgeT}</b>{T.badge}</span></div>
       </div>
     </div>
@@ -199,13 +200,13 @@ const T = {
         <p class="lead">{T.obrasLead} <a class="grad-text" href={site.redes.instagram} target="_blank" rel="noopener">{site.redes.instagramUser}</a>.</p>
       </div>
       <div class="antes-depois reveal">
-        <figure><img src="/img/obras/igreja-antes.webp" alt={`${T.antes}: ${T.adH}`} width="1125" height="1200" loading="lazy"><figcaption>{T.antes}</figcaption></figure>
-        <figure><img src="/img/obras/igreja-depois.webp" alt={`${T.depois}: ${T.adH}`} width="1136" height="1200" loading="lazy"><figcaption>{T.depois}</figcaption></figure>
+        <figure><img src="/img/obras/igreja-antes.webp" alt={`${T.antes}: ${T.adH}`} width="1125" height="1200" loading="lazy" style={foco("/img/obras/igreja-antes.webp")}><figcaption>{T.antes}</figcaption></figure>
+        <figure><img src="/img/obras/igreja-depois.webp" alt={`${T.depois}: ${T.adH}`} width="1136" height="1200" loading="lazy" style={foco("/img/obras/igreja-depois.webp")}><figcaption>{T.depois}</figcaption></figure>
         <div class="ad-txt"><h3>{T.adH}</h3><p>{T.adP}</p></div>
       </div>
       <div class="gal">
         {T.obras.map(([src, alt, cap]) => (
-          <figure class="reveal"><img src={src} alt={alt} width="600" height="800" loading="lazy"><figcaption>{cap}</figcaption></figure>
+          <figure class="reveal"><img src={src} alt={alt} width="600" height="800" loading="lazy" style={foco(src)}><figcaption>{cap}</figcaption></figure>
         ))}
       </div>
     </div>

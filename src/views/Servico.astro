@@ -5,6 +5,7 @@ import FaqList from "../components/FaqList.astro";
 import { servicoPorId, servicosEm, sv } from "../data/servicos";
 import { faqLd, serviceLd } from "../data/seo";
 import { site, waLink } from "../data/site";
+import { foco } from "../data/fotos";
 import { r, type Lang } from "../i18n/routes";
 
 interface Props { id: string; lang: Lang }
@@ -41,7 +42,7 @@ const T = {
         </div>
         <div class="svc-vis">
           {s.imagem
-            ? <img src={s.imagem} alt={`${s.nome} — ${T.alt}`} width="900" height="1100">
+            ? <img src={s.imagem} alt={`${s.nome} — ${T.alt}`} width="900" height="1100" style={foco(s.imagem)}>
             : <span class="svc-vis-ic"><Icon name={s.icone} size={64} /></span>}
         </div>
       </div>

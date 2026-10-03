@@ -272,7 +272,8 @@ p { margin: 0 }
 .box ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px }
 @media (max-width: 920px) {
   .svc-grid, .duas { grid-template-columns: 1fr }
-  .svc-vis { aspect-ratio: 16 / 10 }
+  /* Fotos das obras são verticais: no celular a moldura fica em pé para não cortar o essencial. */
+  .svc-vis { aspect-ratio: 4 / 5; max-height: 72svh; width: 100% }
   .lista { grid-template-columns: 1fr }
 }
 .prosa { max-width: 760px; display: flex; flex-direction: column; gap: 16px }
@@ -425,3 +426,7 @@ a.chat-opt[data-wa] { border-color: var(--wa); background: rgba(37, 211, 102, .1
 .ad-txt { display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 26px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line) }
 @media (max-width: 920px) { .antes-depois { grid-template-columns: 1fr 1fr } .ad-txt { grid-column: 1 / -1 } }
 @media (max-width: 560px) { .lang summary span { display: none } .lang summary { padding: 0 11px } }
+
+/* Retrato (página Sobre): foto de origem pequena — moldura mais contida para não pixelar. */
+.svc-retrato { max-width: 420px; justify-self: center }
+@media (max-width: 920px) { .svc-retrato { max-width: 300px; margin: 0 auto } }

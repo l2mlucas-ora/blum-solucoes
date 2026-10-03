@@ -116,7 +116,7 @@ export const servicos: Servico[] = [
     },
   },
   {
-    id: "controle-de-acesso", icone: "chave", chat: "acs_tipo", imagem: "/img/ig/post6.jpg",
+    id: "controle-de-acesso", icone: "chave", chat: "acs_tipo", imagem: "/img/obras/fechadura.webp",
     t: {
       pt: {
         nome: "Controle de acesso e fechaduras digitais",

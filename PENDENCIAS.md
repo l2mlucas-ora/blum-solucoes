@@ -6,7 +6,7 @@ O site já funciona, mas os itens abaixo dependem de material ou confirmação d
 - [x] **Logo oficial** recebido em 03/10/2026. O símbolo foi vetorizado (`public/img/logo-simbolo.svg`, `public/favicon.svg`) e as variantes branco, grafite e colorido estão em `brand/`.
 - [x] **Fotos de obras** recebidas em 03/10/2026 (igreja antes/depois, perfil de LED, loja com trilhos, sanca, eletroposto, câmeras Intelbras), em `public/img/obras/`.
 - [ ] **Confirmar as legendas das obras.** Escrevi a partir das fotos: "Igreja em Garopaba", "loja de colchões", "eletroposto". A cidade e os detalhes podem estar errados. Se o cliente autorizar, dá para citar nomes (ex.: Eletroposto Nestor).
-- [ ] Ainda usam captura de Reels (com texto por cima): a fechadura digital (`img/ig/post6.jpg`), os balizadores (`post5`), o mapa (`post3`) e a foto do responsável na página Sobre (`post2`).
+- [ ] **Foto do responsável em boa resolução** para a página Sobre. Hoje é um recorte de Reels (360 px), mostrado menor para não pixelar. Ainda vêm do Instagram também: os balizadores (`img/ig/post5.jpg`) e o mapa (`post3`).
 - [ ] **Depoimentos reais com autorização**, do destaque "Feedbacks". Os três da home são ilustrativos (`src/pages/index.astro` → `depoimentos`).
 - [ ] **Nome do responsável e a história da empresa** para a página Sobre (`src/pages/sobre.astro`).
 - [ ] **Ano de início das atividades.** Hoje está 2015 (`src/data/site.ts` → `INICIO_ATIVIDADE`) e o site mostra "+10 anos".
