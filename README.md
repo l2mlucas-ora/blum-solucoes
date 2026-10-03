@@ -50,7 +50,7 @@ Leads de clientes estrangeiros chegam com o campo `idioma` (EN/ES) e o produto m
 O assistente não usa IA. É um roteiro de botões (`src/data/chat/{pt,en,es}.ts`) executado por `src/scripts/chat.ts`, portado da Target. Os caminhos são:
 
 - **Serviço → pré-orçamento.** Faz de 2 a 3 perguntas de qualificação. Depois mostra a faixa de preço se `precos.ts` estiver confirmado; se não estiver, mostra "sob consulta". Em seguida oferece visita ou WhatsApp.
-- **Visita técnica.** Pede o serviço, a cidade (lista da região ou outra), o bairro, o dia (os próximos 5 dias, de segunda a sábado) e o período. A confirmação do horário é feita pela equipe, no WhatsApp.
+- **Visita técnica.** Pede o serviço, a cidade (lista da região ou outra), o bairro, o dia (os próximos 5 dias úteis, conforme o horário em `site.ts`) e o período. A confirmação do horário é feita pela equipe, no WhatsApp.
 - **Emergência.** Orienta sobre segurança, informa o telefone da Celesc e leva direto ao WhatsApp.
 - **Dúvidas.** Busca por palavra-chave em todas as FAQs do site.
 - **Lead.** Pede nome e WhatsApp e o consentimento LGPD. Envia para `/api/lead` com a origem `orcamento`, `visita` ou `chatbot` e, em seguida, oferece o WhatsApp com o resumo da conversa.

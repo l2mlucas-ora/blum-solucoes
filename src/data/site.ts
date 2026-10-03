@@ -35,15 +35,16 @@ export const site = {
   razaoSocial: "",
   cnpj: "",
   endereco: { cidade: "Garopaba", uf: "SC", regiaoIso: "BR-SC" },
-  // PENDENTE: confirmar horário. O assistente e a bio usam estes valores para dizer "aberto agora".
+  // Confirmado pelo cliente em 03/10/2026. O assistente e a bio usam estes valores para dizer "aberto agora".
+  // `sabado: null` = fechado no sábado (para abrir, use ["09:00", "12:00"] e ajuste os textos).
   horario: {
     texto: {
-      pt: "Segunda a sexta, 8h às 18h · Sábado, 8h às 12h",
-      en: "Mon–Fri 8 am–6 pm · Sat 8 am–12 pm (Brasília time)",
-      es: "Lunes a viernes, 8 a 18 h · Sábado, 8 a 12 h (hora de Brasilia)",
+      pt: "Segunda a sexta, 9h às 17h",
+      en: "Mon–Fri, 9 am–5 pm (Brasília time)",
+      es: "Lunes a viernes, 9 a 17 h (hora de Brasilia)",
     } as T,
-    semana: ["08:00", "18:00"],
-    sabado: ["08:00", "12:00"],
+    semana: ["09:00", "17:00"],
+    sabado: null as readonly [string, string] | null,
   },
   redes: {
     instagram: "https://www.instagram.com/blum_solucoes/",
@@ -64,7 +65,7 @@ export function abertoAgora(d = new Date()) {
   const get = (t: string) => parts.find((p) => p.type === t)!.value;
   const dia = get("weekday");
   const min = (Number(get("hour")) % 24) * 60 + Number(get("minute"));
-  const faixa = dia === "Sun" ? null : dia === "Sat" ? site.horario.sabado : site.horario.semana;
+  const faixa: readonly string[] | null = dia === "Sun" ? null : dia === "Sat" ? site.horario.sabado : site.horario.semana;
   if (!faixa) return false;
   const [a, f] = faixa.map((h) => { const [hh, mm] = h.split(":").map(Number); return hh * 60 + mm; });
   return min >= a && min < f;

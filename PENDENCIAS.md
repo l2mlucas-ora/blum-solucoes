@@ -13,7 +13,7 @@ O site já funciona, mas os itens abaixo dependem de material ou confirmação d
 
 ## Dados da empresa (`src/data/site.ts`)
 - [ ] Razão social e CNPJ: aparecem no rodapé, no JSON-LD e na política de privacidade.
-- [ ] Horário de atendimento. Hoje está seg–sex 8h–18h e sáb 8h–12h; o assistente e a bio usam esses valores para dizer "aberto agora".
+- [x] Horário de atendimento: segunda a sexta, 9h às 17h (confirmado em 03/10/2026).
 - [ ] Lista de cidades e praias atendidas: conferir se falta ou sobra alguma.
 - [ ] Endereço físico, se houver atendimento no local. Hoje o site mostra apenas "Garopaba e região".
 - [ ] E-mail para receber os leads (`LEAD_EMAIL_TO`).

@@ -42,6 +42,7 @@ for (const lang of ["pt", "en", "es"] as Lang[]) {
   const dias = proximosDias(5, lang, new Date("2026-10-03T12:00:00-03:00")); // sábado
   if (dias.length !== 5) erro(`[${lang}] proximosDias devolveu ${dias.length} dias`);
   if (dias.some((d) => /^(dom|sun)/i.test(d))) erro(`[${lang}] proximosDias incluiu domingo: ${dias.join(", ")}`);
+  if (dias.some((d) => /^(s[aá]b|sat)/i.test(d))) erro(`[${lang}] proximosDias incluiu sábado (não há atendimento): ${dias.join(", ")}`);
 
   const faqs = allFaq(lang);
   if (faqs.length < 20) erro(`[${lang}] poucas FAQs (${faqs.length})`);

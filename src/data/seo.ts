@@ -29,7 +29,7 @@ export function organizationLd(lang: Lang = "pt") {
     address: { "@type": "PostalAddress", addressLocality: site.endereco.cidade, addressRegion: site.endereco.uf, addressCountry: "BR" },
     openingHoursSpecification: [
       { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: site.horario.semana[0], closes: site.horario.semana[1] },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: site.horario.sabado[0], closes: site.horario.sabado[1] },
+      ...(site.horario.sabado ? [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: site.horario.sabado[0], closes: site.horario.sabado[1] }] : []),
     ],
     areaServed: area(),
     knowsLanguage: ["pt-BR", "en", "es"],

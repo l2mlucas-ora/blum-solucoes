@@ -3,6 +3,7 @@
  * Os três roteiros têm OS MESMOS ids de nó — o motor (src/scripts/chat.ts) e o teste dependem disso.
  */
 import type { Lang } from "../../i18n/routes";
+import { site } from "../site";
 
 export type State = Record<string, string>;
 
@@ -31,14 +32,15 @@ export const opts = (labels: string[], next: string, campo: string, extra: State
 
 const LOCALE: Record<Lang, string> = { pt: "pt-BR", en: "en-US", es: "es-AR" };
 
-/** Próximos dias de atendimento (seg–sáb), a partir de amanhã, no fuso de Brasília. */
+/** Próximos dias de atendimento (seg–sex; sábado só se houver horário de sábado em site.ts), a partir de amanhã, no fuso de Brasília. */
 export function proximosDias(n = 5, lang: Lang = "pt", hoje = new Date()): string[] {
   const out: string[] = [];
   const fmt = new Intl.DateTimeFormat(LOCALE[lang], { timeZone: "America/Sao_Paulo", weekday: "short", day: "numeric", month: "short" });
   const dow = new Intl.DateTimeFormat("en-US", { timeZone: "America/Sao_Paulo", weekday: "short" });
   for (let i = 1; out.length < n && i < 14; i++) {
     const d = new Date(hoje.getTime() + i * 86_400_000);
-    if (dow.format(d) === "Sun") continue;
+    const dia = dow.format(d);
+    if (dia === "Sun" || (dia === "Sat" && !site.horario.sabado)) continue;
     out.push(fmt.format(d).replace(/\./g, "").replace(/^\w/, (c) => c.toUpperCase()));
   }
   return out;
