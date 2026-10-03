@@ -1,5 +1,7 @@
 # Domínio próprio e contas
 
+Hoje o site está em prévia no GitHub Pages (`npm run previa`, ver README). Quando a Blum comprar o domínio, o site definitivo vai para o Cloudflare Pages, que roda o `/api/lead`. Use uma conta Cloudflare da Blum ou sua, **não** a da Target.
+
 ## 1. Registrar o domínio
 Registre o domínio no Registro.br (por exemplo, `blumsolucoes.com.br`) **no CNPJ ou CPF da Blum**, para que ele pertença ao cliente.
 
@@ -10,8 +12,7 @@ Registre o domínio no Registro.br (por exemplo, `blumsolucoes.com.br`) **no CNP
 
 ## 3. Atualizar o código
 Troque `https://blum-solucoes.pages.dev` pelo domínio definitivo nos arquivos abaixo:
-- `astro.config.mjs` → `site`
-- `src/data/site.ts` → `site.url`
+- `astro.config.mjs`: o padrão de `SITE_URL` (ou defina a variável `SITE_URL` no Cloudflare Pages); `src/data/site.ts` lê esse valor automaticamente.
 - `public/robots.txt` → linha `Sitemap:`
 - `tests/lead.test.ts`: o teste do domínio oficial já usa `https://blumsolucoes.com.br/`; ajuste se o domínio for outro.
 

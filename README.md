@@ -71,6 +71,22 @@ Todas são opcionais: sem nenhuma delas, o assistente e o formulário encaminham
 | `PUBLIC_GA_ID` | Google Analytics 4, carregado só após o aceite de cookies |
 | `LEAD_DEBUG=1` | Somente em desenvolvimento: aceita o lead sem destino e só registra no log |
 
+## Prévia para o cliente (GitHub Pages)
+
+Link provisório: **https://l2mlucas-ora.github.io/blum-solucoes/** (bio: `…/blum-solucoes/bio/`).
+
+Para atualizar a prévia depois de uma mudança, faça o commit e rode:
+
+```bash
+npm run previa
+```
+
+O comando roda os testes, gera o site na subpasta `/blum-solucoes/` e envia para a branch `gh-pages`. O GitHub publica em 1–2 minutos. Diferenças em relação ao site definitivo:
+
+- **Fica fora do Google:** `noindex` em todas as páginas.
+- **Sem `/api/lead`:** o GitHub Pages não roda Functions. O assistente e o formulário levam o cliente direto ao WhatsApp, com a conversa pronta.
+- **Endereços na subpasta:** o código usa caminhos começando em `/`, e o `scripts/aplicar-base.mjs` prefixa `/blum-solucoes` no site gerado.
+
 ## Deploy
 
 Cloudflare Pages conectado ao GitHub, com estas configurações:

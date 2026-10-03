@@ -31,5 +31,6 @@ O site já funciona, mas os itens abaixo dependem de material ou confirmação d
 - [ ] Confirmar se a equipe realmente atende em **inglês e espanhol** pelo WhatsApp. O site promete isso em vários pontos.
 
 ## Domínio e contas
+- [x] Prévia publicada em 03/10/2026: https://l2mlucas-ora.github.io/blum-solucoes/ (validação com o cliente).
 - [ ] Registrar o domínio (ex.: blumsolucoes.com.br) e seguir `MIGRACAO.md`.
 - [ ] Trocar o link da bio do Instagram de `wa.me/5548996631148` para `https://<domínio>/bio/`.
