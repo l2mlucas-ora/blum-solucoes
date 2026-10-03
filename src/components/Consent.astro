@@ -1,0 +1,22 @@
+---
+// Aviso de cookies (LGPD): analytics só carrega com aceite explícito. Só aparece quando há GA configurado.
+import { idiomaDe, r } from "../i18n/routes";
+import { ui } from "../i18n/ui";
+const lang = idiomaDe(Astro.url.pathname);
+const t = ui[lang].cookies;
+---
+<div class="consent-bar" id="consent" role="region" aria-label={t.regiao} hidden>
+  <p>{t.texto} <a href={r("privacidade", lang, "#cookies")}>{t.saiba}</a>.</p>
+  <div class="consent-act">
+    <button type="button" class="btn btn-ghost btn-sm" data-consent="essential">{t.essenciais}</button>
+    <button type="button" class="btn btn-primary btn-sm" data-consent="all">{t.aceitar}</button>
+  </div>
+</div>
+<script>
+  import { consentDecided, setConsent } from "../scripts/analytics";
+  const bar = document.getElementById("consent")!;
+  if (!consentDecided() && document.querySelector('meta[name="ga-id"]')) bar.hidden = false;
+  bar.querySelectorAll<HTMLButtonElement>("[data-consent]").forEach((b) =>
+    b.addEventListener("click", () => { setConsent(b.dataset.consent as "all" | "essential"); bar.hidden = true; }));
+  document.querySelectorAll("[data-consent-open]").forEach((b) => b.addEventListener("click", () => { bar.hidden = false; }));
+</script>

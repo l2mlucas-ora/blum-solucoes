@@ -1,0 +1,8 @@
+---
+// Crédito do desenvolvedor: ícone oficial da Extrema Consultoria (mesmo componente do site da Target), com link.
+interface Props { label?: string }
+const { label = "Desenvolvido por" } = Astro.props;
+---
+<a class="dev-credit" href="https://extremaconsultoria.com.br/" target="_blank" rel="noopener" title={`${label} Extrema Consultoria`}>
+  <img src="/img/extrema-consultoria.svg" width="28" height="28" alt={`${label} Extrema Consultoria`} loading="lazy" decoding="async">
+</a>

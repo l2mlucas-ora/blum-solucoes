@@ -1,0 +1,19 @@
+---
+/* Seletor de idioma (globo → PT / EN / ES), como na Target. Abre a mesma página no outro idioma. */
+import Icon from "./Icon.astro";
+import { alternativas, idiomaDe, htmlLang, nomeIdioma, rotas, LANGS } from "../i18n/routes";
+import { ui } from "../i18n/ui";
+const path = Astro.url.pathname;
+const lang = idiomaDe(path);
+const alt = alternativas(path) ?? rotas.home;
+---
+<details class="lang">
+  <summary aria-label={ui[lang].nav.idioma} title="Idioma / Language / Idioma">
+    <Icon name="globo" size={16} /><span>{lang.toUpperCase()}</span>
+  </summary>
+  <ul class="lang-menu">
+    {LANGS.map((l) => (
+      <li><a href={alt[l]} hreflang={htmlLang[l]} lang={htmlLang[l]} aria-current={l === lang ? "true" : undefined} data-lang={l}><b>{l.toUpperCase()}</b>{nomeIdioma[l]}</a></li>
+    ))}
+  </ul>
+</details>

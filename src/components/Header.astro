@@ -1,0 +1,59 @@
+---
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+import LangSwitch from "./LangSwitch.astro";
+import { servicosEm } from "../data/servicos";
+import { waLink, waPadrao } from "../data/site";
+import { idiomaDe, r } from "../i18n/routes";
+import { ui } from "../i18n/ui";
+const path = Astro.url.pathname;
+const lang = idiomaDe(path);
+const t = ui[lang].nav;
+const servicos = servicosEm(lang);
+const home = r("home", lang);
+const cur = (h: string) => (path === h ? "page" : undefined);
+---
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a href={home} class="hdr-logo" aria-label={t.inicio}><Logo /></a>
+    <nav class="nav" aria-label="Menu">
+      <details class="nav-drop">
+        <summary>{t.servicos}</summary>
+        <ul>
+          {servicos.map((s) => <li><a href={s.href} aria-current={cur(s.href)}><Icon name={s.icone} size={18} />{s.nome}</a></li>)}
+        </ul>
+      </details>
+      <a href={`${home}#obras`}>{t.obras}</a>
+      <a href={r("sobre", lang)} aria-current={cur(r("sobre", lang))}>{t.sobre}</a>
+      <a href={`${home}#duvidas`}>{t.duvidas}</a>
+      <a href={`${home}#contato`}>{t.contato}</a>
+    </nav>
+    <div class="hdr-act">
+      <LangSwitch />
+      <button class="icon-btn" type="button" data-theme-toggle aria-label={t.tema}>
+        <Icon name="sol" size={18} class="ic-sun" /><Icon name="lua" size={18} class="ic-moon" />
+      </button>
+      <a class="btn btn-primary btn-sm hdr-cta" href={waLink(waPadrao[lang])} target="_blank" rel="noopener"><Icon name="whats" size={18} />{t.orcamento}</a>
+      <button class="icon-btn burger" id="burger" type="button" aria-expanded="false" aria-controls="mpanel" aria-label={t.menu}>
+        <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mpanel" id="mpanel" data-open="false">
+    <p class="mpanel-tt">{t.servicos}</p>
+    {servicos.map((s) => <a href={s.href}><Icon name={s.icone} size={18} />{s.nome}</a>)}
+    <hr>
+    <a href={`${home}#obras`}>{t.obras}</a>
+    <a href={r("sobre", lang)}>{t.sobre}</a>
+    <a href={`${home}#duvidas`}>{t.duvidas}</a>
+    <a href={`${home}#contato`}>{t.contato}</a>
+    <button type="button" class="btn btn-primary" data-chat-open="inicio">{t.orcRapido}</button>
+  </div>
+</header>
+<script>
+  // Fecha o menu "Serviços" e o seletor de idioma ao clicar fora ou apertar Esc.
+  document.querySelectorAll<HTMLDetailsElement>(".nav-drop, .lang").forEach((d) => {
+    document.addEventListener("click", (e) => { if (!d.contains(e.target as Node)) d.open = false; });
+    d.addEventListener("keydown", (e) => { if (e.key === "Escape") { d.open = false; d.querySelector("summary")?.focus(); } });
+  });
+</script>

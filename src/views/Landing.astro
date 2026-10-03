@@ -1,0 +1,152 @@
+---
+/* Landings de SEO local nos três idiomas: eletricista, câmeras e casa de temporada/Airbnb. */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import FaqList from "../components/FaqList.astro";
+import { servicoPorId, sv, servicosEm } from "../data/servicos";
+import { faqLd, serviceLd, type Faq } from "../data/seo";
+import { site, waLink } from "../data/site";
+import { r, type Lang } from "../i18n/routes";
+
+type Tipo = "eletricista" | "cameras" | "temporada";
+interface Props { tipo: Tipo; lang: Lang }
+const { tipo, lang } = Astro.props;
+
+interface Conteudo { servico: string; titulo: string; h1: string; descricao: string; intro: string[]; faq: Faq[]; imagem: string; chat: string; itens?: string[] }
+const C: Record<Tipo, Record<Lang, Conteudo>> = {
+  eletricista: {
+    pt: {
+      servico: "eletrica", imagem: "/img/obras/eletroposto.webp", chat: "ele_tipo",
+      titulo: "Eletricista em Garopaba", h1: "Eletricista em Garopaba e região",
+      descricao: "Eletricista em Garopaba, Imbituba, Praia do Rosa e Ferrugem: instalação e reforma elétrica, quadro de distribuição, padrão de entrada Celesc, carregador de carro elétrico e manutenção.",
+      intro: ["Precisa de eletricista em Garopaba? A Blum Soluções atende residências, casas de temporada, pousadas, lojas e igrejas com instalação, reforma e manutenção elétrica — seguindo a NBR 5410 e as normas da Celesc.", "Do chuveiro que desarma ao eletroposto: diagnóstico honesto, orçamento por escrito e serviço com garantia."],
+      faq: [{ q: "Vocês atendem no fim de semana?", a: "Atendemos aos sábados pela manhã. Em emergências fora do horário, chame no WhatsApp que verificamos a disponibilidade." }, { q: "Fazem revisão elétrica de casa de temporada?", a: "Sim. Antes da temporada revisamos quadro, tomadas, chuveiros e iluminação externa, para evitar problema com hóspede." }, { q: "Instalam carregador de carro elétrico?", a: "Instalamos, em casa ou em comércio, com o circuito e a proteção dimensionados para o carregador — inclusive eletropostos." }],
+    },
+    en: {
+      servico: "eletrica", imagem: "/img/obras/eletroposto.webp", chat: "ele_tipo",
+      titulo: "English-speaking electrician in Garopaba", h1: "English-speaking electrician in Garopaba, Brazil",
+      descricao: "English-speaking electrician in Garopaba, Imbituba, Praia do Rosa and Ferrugem: wiring and renovations, breaker panels, Celesc utility hookup, EV chargers and maintenance.",
+      intro: ["Looking for an electrician in Garopaba who speaks English? Blum Soluções serves homes, vacation rentals, guesthouses, shops and churches with installation, renovation and maintenance — to Brazilian NBR 5410 and Celesc standards.", "From an electric shower that keeps tripping to an EV charging station: honest diagnosis, written quotes and guaranteed work. We handle everything on WhatsApp, even if you live abroad."],
+      faq: [{ q: "Do you work on weekends?", a: "We work Saturday mornings. For after-hours emergencies, message us on WhatsApp and we'll check availability." }, { q: "Do you do pre-season electrical checks on vacation homes?", a: "Yes. Before the season we check the breaker panel, outlets, electric showers and outdoor lighting so your guests have no surprises." }, { q: "Do you install EV chargers?", a: "Yes, at home or at businesses, with the circuit and protection sized for the charger — including public charging stations." }],
+    },
+    es: {
+      servico: "eletrica", imagem: "/img/obras/eletroposto.webp", chat: "ele_tipo",
+      titulo: "Electricista en Garopaba que habla español", h1: "Electricista en Garopaba que habla español",
+      descricao: "Electricista en Garopaba, Imbituba, Praia do Rosa y Ferrugem que habla español: instalación y reforma eléctrica, tablero, acometida de Celesc, cargador de auto eléctrico y mantenimiento.",
+      intro: ["¿Buscas electricista en Garopaba que hable español? Blum Soluções atiende casas, casas de temporada, posadas, tiendas e iglesias con instalación, reforma y mantenimiento eléctrico — según la norma NBR 5410 y las reglas de Celesc.", "De la ducha que hace saltar el disyuntor a la electrolinera: diagnóstico honesto, presupuesto por escrito y trabajo con garantía. Coordinamos todo por WhatsApp, aunque vivas en otro país."],
+      faq: [{ q: "¿Atienden los fines de semana?", a: "Atendemos los sábados por la mañana. Para emergencias fuera de horario, escríbenos por WhatsApp y vemos la disponibilidad." }, { q: "¿Hacen revisión eléctrica de casas de temporada?", a: "Sí. Antes de la temporada revisamos tablero, enchufes, duchas e iluminación exterior para que el huésped no tenga sorpresas." }, { q: "¿Instalan cargadores de auto eléctrico?", a: "Sí, en casa o en comercios, con el circuito y la protección dimensionados para el cargador — incluso electrolineras." }],
+    },
+  },
+  cameras: {
+    pt: {
+      servico: "cameras-cftv", imagem: "/img/obras/camera-pergolado.webp", chat: "cam_local",
+      titulo: "Câmeras de segurança em Garopaba", h1: "Câmeras de segurança em Garopaba e região",
+      descricao: "Instalação de câmeras de segurança em Garopaba, Imbituba, Praia do Rosa e Ferrugem: CFTV Intelbras com visão noturna, gravação e acesso pelo celular para casas de praia, pousadas e comércios.",
+      intro: ["Casa de praia fechada boa parte do ano? Pousada ou comércio? Instalamos câmeras de segurança em Garopaba e região com imagem nítida de dia e de noite, gravação e acesso pelo celular de onde você estiver.", "Fazemos o projeto de posicionamento, passamos o cabeamento com acabamento e configuramos o aplicativo para você e sua família ou equipe."],
+      faq: [{ q: "Dá para ver a casa de praia de outra cidade?", a: "Dá. Com internet no imóvel, você vê as câmeras ao vivo e as gravações pelo celular, de qualquer lugar." }, { q: "A câmera aguenta a maresia?", a: "Usamos câmeras com proteção para área externa e caixas de passagem vedadas, adequadas ao clima do litoral." }],
+    },
+    en: {
+      servico: "cameras-cftv", imagem: "/img/obras/camera-pergolado.webp", chat: "cam_local",
+      titulo: "Security cameras in Garopaba", h1: "Security cameras in Garopaba, Brazil",
+      descricao: "Security camera installation in Garopaba, Imbituba, Praia do Rosa and Ferrugem: Intelbras CCTV with night vision, recording and phone access — watch your beach house from abroad.",
+      intro: ["Is your beach house empty most of the year? Own a guesthouse or shop? We install security cameras in Garopaba and nearby with a sharp image day and night, recording and live view on your phone from any country.", "We plan the camera positions, run the cabling with a clean finish and set up the app for you, your family or your property manager."],
+      faq: [{ q: "Can I watch my beach house from another country?", a: "Yes. With internet at the property you watch live and search recordings on your phone from anywhere in the world." }, { q: "Do the cameras withstand the salty sea air?", a: "We use outdoor-rated cameras and sealed junction boxes suited to the coastal climate." }],
+    },
+    es: {
+      servico: "cameras-cftv", imagem: "/img/obras/camera-pergolado.webp", chat: "cam_local",
+      titulo: "Cámaras de seguridad en Garopaba", h1: "Cámaras de seguridad en Garopaba y región",
+      descricao: "Instalación de cámaras de seguridad en Garopaba, Imbituba, Praia do Rosa y Ferrugem: CCTV Intelbras con visión nocturna, grabación y acceso desde el celular — mira tu casa de playa desde tu país.",
+      intro: ["¿Tu casa de playa queda cerrada gran parte del año? ¿Tienes posada o comercio? Instalamos cámaras de seguridad en Garopaba y región con imagen nítida de día y de noche, grabación y acceso desde el celular en cualquier país.", "Hacemos el proyecto de ubicación, pasamos el cableado con buena terminación y configuramos la app para ti, tu familia o quien cuide la propiedad."],
+      faq: [{ q: "¿Puedo ver mi casa de playa desde otro país?", a: "Sí. Con internet en la propiedad ves en vivo y buscas grabaciones desde el celular, en cualquier lugar del mundo." }, { q: "¿Las cámaras aguantan la brisa marina?", a: "Usamos cámaras aptas para exterior y cajas de paso selladas, adecuadas al clima de la costa." }],
+    },
+  },
+  temporada: {
+    pt: {
+      servico: "controle-de-acesso", imagem: "/img/ig/post6.jpg", chat: "acs_tipo",
+      titulo: "Casa de temporada e Airbnb em Garopaba", h1: "Casa de temporada e Airbnb prontos para receber",
+      descricao: "Pacote para casas de temporada e Airbnb em Garopaba, Praia do Rosa e Ferrugem: revisão elétrica, câmeras com acesso remoto, fechadura digital com senha por hóspede e iluminação externa.",
+      intro: ["Você aluga sua casa por temporada ou no Airbnb? A gente deixa tudo pronto antes do hóspede chegar — e você acompanha de onde estiver.", "Um só fornecedor para elétrica, câmeras, fechadura digital e iluminação, com atendimento pelo WhatsApp."],
+      itens: ["Revisão elétrica completa antes da temporada", "Fechadura digital com senha diferente para cada hóspede", "Câmeras externas com acesso pelo celular", "Iluminação externa com sensor ou timer", "Proteção contra surtos (DPS) para eletrodomésticos", "Atendimento rápido durante a temporada"],
+      faq: [{ q: "Consigo gerenciar a fechadura de longe?", a: "Sim. Com modelos por aplicativo você cria e apaga senhas de hóspedes pelo celular, de qualquer lugar." }, { q: "Vocês atendem chamados durante a temporada?", a: "Sim. Clientes que preparam a casa com a gente têm prioridade para atendimento no verão." }],
+    },
+    en: {
+      servico: "controle-de-acesso", imagem: "/img/ig/post6.jpg", chat: "acs_tipo",
+      titulo: "Vacation rentals and Airbnb in Garopaba", h1: "Your vacation home ready for guests — managed from abroad",
+      descricao: "Package for vacation rentals and Airbnb hosts in Garopaba, Praia do Rosa and Ferrugem: electrical check, cameras with remote access, smart locks with a code per guest and outdoor lighting. English-speaking team.",
+      intro: ["Do you rent out your home in Garopaba on Airbnb or for the season, maybe while living abroad? We get everything ready before guests arrive — and you follow it all from wherever you are.", "One single contractor for electrical, cameras, smart locks and lighting, with English-speaking service on WhatsApp."],
+      itens: ["Full electrical check before the season", "Smart lock with a different code for each guest", "Outdoor cameras you can watch from abroad", "Outdoor lighting with sensor or timer", "Surge protection for appliances", "Fast response during high season"],
+      faq: [{ q: "Can I manage the lock from another country?", a: "Yes. With app-based models you create and delete guest codes on your phone from anywhere." }, { q: "Do you answer calls during high season?", a: "Yes. Clients who prepare their home with us get priority service during the summer." }],
+    },
+    es: {
+      servico: "controle-de-acesso", imagem: "/img/ig/post6.jpg", chat: "acs_tipo",
+      titulo: "Casas de temporada y Airbnb en Garopaba", h1: "Tu casa de temporada lista para recibir — manejada desde tu país",
+      descricao: "Paquete para casas de temporada y anfitriones de Airbnb en Garopaba, Praia do Rosa y Ferrugem: revisión eléctrica, cámaras con acceso remoto, cerradura digital con clave por huésped e iluminación exterior. Atención en español.",
+      intro: ["¿Alquilas tu casa en Garopaba por temporada o en Airbnb, quizás viviendo en Argentina, Uruguay u otro país? Dejamos todo listo antes de que llegue el huésped — y tú lo sigues desde donde estés.", "Un solo proveedor para electricidad, cámaras, cerradura digital e iluminación, con atención en español por WhatsApp."],
+      itens: ["Revisión eléctrica completa antes de la temporada", "Cerradura digital con una clave distinta para cada huésped", "Cámaras exteriores que ves desde tu país", "Iluminación exterior con sensor o temporizador", "Protección contra sobretensiones para electrodomésticos", "Atención rápida durante la temporada"],
+      faq: [{ q: "¿Puedo manejar la cerradura desde otro país?", a: "Sí. Con modelos por app creas y borras claves de huéspedes desde el celular, en cualquier lugar." }, { q: "¿Atienden llamados durante la temporada?", a: "Sí. Los clientes que preparan la casa con nosotros tienen prioridad de atención en el verano." }],
+    },
+  },
+};
+const c = C[tipo][lang];
+const s = sv(servicoPorId[c.servico], lang);
+const itens = c.itens ?? s.itens;
+const faqs = [...c.faq, ...s.faq];
+const path = Astro.url.pathname;
+const home = r("home", lang);
+const T = {
+  pt: { inicio: "Início", pre: "Pré-orçamento", ola: "Olá! Procuro", oque: (x: string) => `O que fazemos em ${x} e região`, servicos: "Serviços", duv: "Perguntas frequentes", duvEye: "Dúvidas", bairros: "Cidades e praias atendidas", ver: "Ver detalhes do serviço", outros: "Também fazemos" },
+  en: { inicio: "Home", pre: "Ballpark quote", ola: "Hi! I'm looking for", oque: (x: string) => `What we do in ${x} and nearby`, servicos: "Services", duv: "Frequently asked questions", duvEye: "FAQ", bairros: "Towns and beaches covered", ver: "See service details", outros: "We also do" },
+  es: { inicio: "Inicio", pre: "Presupuesto estimado", ola: "¡Hola! Busco", oque: (x: string) => `Qué hacemos en ${x} y región`, servicos: "Servicios", duv: "Preguntas frecuentes", duvEye: "Preguntas", bairros: "Ciudades y playas atendidas", ver: "Ver detalles del servicio", outros: "También hacemos" },
+}[lang];
+---
+<Base title={c.titulo} description={c.descricao} crumbs={[{ name: c.titulo, href: path }]}
+  jsonld={[serviceLd({ name: c.titulo, description: c.descricao, path }), faqLd(faqs)]} chat={c.chat} image={c.imagem}>
+  <section class="svc-hero">
+    <div class="wrap">
+      <ol class="crumbs"><li><a href={home}>{T.inicio}</a></li><li aria-current="page">{c.titulo}</li></ol>
+      <div class="svc-grid">
+        <div class="hero-txt">
+          <span class="eyebrow">{site.endereco.cidade} · {site.endereco.uf}</span>
+          <h1>{c.h1}</h1>
+          {c.intro.map((p) => <p class="lead">{p}</p>)}
+          <div class="hero-cta">
+            <button type="button" class="btn btn-primary btn-lg" data-chat-open={c.chat}><Icon name="chat" size={20} />{T.pre}</button>
+            <a class="btn btn-ghost btn-lg" href={waLink(`${T.ola} ${c.titulo.toLowerCase()}.`)} target="_blank" rel="noopener"><Icon name="whats" size={20} />WhatsApp</a>
+          </div>
+        </div>
+        <div class="svc-vis"><img src={c.imagem} alt={c.h1} width="900" height="1100"></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">{T.servicos}</span><h2>{T.oque(site.endereco.cidade)}</h2></div>
+      <ul class="lista">{itens.map((i) => <li class="reveal"><Icon name="check" size={20} />{i}</li>)}</ul>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap duas">
+      <div>
+        <div class="sec-head reveal"><span class="eyebrow">{T.duvEye}</span><h2>{T.duv}</h2></div>
+        <FaqList items={faqs} />
+      </div>
+      <aside class="box reveal">
+        <h3>{T.bairros}</h3>
+        <ul class="chips">{site.regiao.map((x) => <li><Icon name="pin" size={16} />{x}</li>)}</ul>
+        <a class="btn btn-ghost" href={s.href}>{T.ver}</a>
+      </aside>
+    </div>
+  </section>
+  {tipo === "temporada" && (
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="eyebrow">{T.servicos}</span><h2>{T.outros}</h2></div>
+        <div class="cards">
+          {servicosEm(lang).filter((o) => o.id !== c.servico).map((o) => (
+            <a class="card reveal" href={o.href}><span class="card-ic"><Icon name={o.icone} size={24} /></span><h3>{o.nome}</h3><p>{o.curto}</p></a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Base>

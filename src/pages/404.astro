@@ -1,0 +1,19 @@
+---
+/* 404 única para os três idiomas (o Cloudflare Pages serve /404.html para qualquer endereço inexistente). */
+import Base from "../layouts/Base.astro";
+---
+<Base title="Página não encontrada · Page not found · Página no encontrada" description="Esta página não existe." noindex>
+  <section class="sec">
+    <div class="wrap sec-head center" style="margin-bottom:0">
+      <span class="eyebrow">404</span>
+      <h1>Essa página <span class="grad-text">saiu do ar.</span></h1>
+      <p class="lead">O endereço pode ter mudado. Volte para o início ou fale com o assistente.</p>
+      <p class="lead" lang="en">This page doesn't exist. <a class="grad-text" href="/en/">Go to the English site</a>.</p>
+      <p class="lead" lang="es">Esta página no existe. <a class="grad-text" href="/es/">Ir al sitio en español</a>.</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a class="btn btn-primary" href="/">Ir para o início</a>
+        <button type="button" class="btn btn-ghost" data-chat-open="inicio">Abrir assistente</button>
+      </div>
+    </div>
+  </section>
+</Base>

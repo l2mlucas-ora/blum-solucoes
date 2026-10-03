@@ -1,0 +1,304 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import FaqList from "../components/FaqList.astro";
+import { servicosEm } from "../data/servicos";
+import { faqGeral } from "../data/faq";
+import { faqLd } from "../data/seo";
+import { site, whatsapp, waLink, waPadrao, anosDeMercado } from "../data/site";
+import { r, type Lang } from "../i18n/routes";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const anos = anosDeMercado - 1;
+const servicos = servicosEm(lang);
+const tel = lang === "pt" ? whatsapp.exibicao : whatsapp.internacional;
+
+const T = {
+  pt: {
+    title: "Blum Soluções — Elétrica e segurança eletrônica em Garopaba e região",
+    desc: "Eletricista, câmeras de segurança, fechaduras digitais, alarmes e iluminação em Garopaba, Imbituba e região. Mais de 10 anos de experiência. Orçamento rápido pelo WhatsApp.",
+    eyebrow: "Garopaba e região · SC",
+    h1a: "Elétrica e segurança eletrônica", h1b: "feitas do jeito certo.",
+    lead: "Instalações elétricas, câmeras com acesso pelo celular, fechaduras digitais, alarmes e iluminação — para casas, casas de temporada, pousadas, lojas e igrejas. Há mais de 10 anos entregando a melhor experiência aos nossos clientes.",
+    orc: "Orçamento rápido", visita: "Agendar visita técnica",
+    trust: [`+${anos} anos de experiência`, "Normas NBR 5410 e Celesc", "Atendimento pelo WhatsApp"],
+    badgeT: "Antes e depois de verdade", badge: "Iluminação completa de igreja em Garopaba",
+    servEye: "Serviços", servH: "Tudo de elétrica e segurança, com uma equipe só", servLead: "Do quadro de luz à câmera no celular: projeto, instalação e manutenção sem você precisar coordenar vários prestadores.",
+    mais: "Saiba mais", naoSabeH: "Não sabe por onde começar?", naoSabe: "Conte o que precisa ao assistente: ele indica o serviço e já faz o pré-orçamento.", falar: "Falar com o assistente",
+    stats: [[`+${anos}`, "anos de experiência"], ["5", "especialidades em uma equipe"], [String(site.regiao.length), "cidades e praias atendidas"], ["3", "idiomas: português, inglês e espanhol"]],
+    passosEye: "Como funciona", passosH: "Do primeiro contato à obra entregue",
+    passos: [["Conte o que precisa", "Pelo assistente do site ou no WhatsApp. Fotos ajudam muito."], ["Visita técnica", "Vamos ao local, medimos e indicamos a melhor solução para o seu caso."], ["Orçamento claro", "Material, mão de obra e prazo por escrito. Sem surpresa no fim."], ["Execução e garantia", "Instalação limpa, teste de tudo e explicação de como usar."]],
+    obrasEye: "Obras recentes", obrasH: "O nosso trabalho no dia a dia", obrasLead: "Acompanhe mais obras no Instagram",
+    antes: "Antes", depois: "Depois", adH: "Igreja em Garopaba: da obra crua à luz que acolhe", adP: "Projeto e instalação elétrica completa, spots embutidos no forro de madeira, fita de LED nas laterais e destaque na parede de pedra do altar.",
+    obras: [
+      ["/img/obras/corredor-led.webp", "Perfil de LED embutido no teto de corredor", "Perfil de LED embutido"],
+      ["/img/obras/loja-trilho.webp", "Loja de colchões com trilhos de spots e LED", "Iluminação comercial com trilhos"],
+      ["/img/obras/sanca-led.webp", "Sanca com iluminação indireta de LED", "Sanca com luz indireta"],
+      ["/img/obras/eletroposto.webp", "Eletroposto com carregador de carro elétrico", "Eletroposto / carregador veicular"],
+      ["/img/obras/camera-pergolado.webp", "Câmera de segurança Intelbras instalada em pergolado", "Câmeras Intelbras"],
+      ["/img/ig/post6.jpg", "Fechadura digital instalada em porta de madeira ripada", "Fechadura digital"],
+      ["/img/obras/camera-fachada.webp", "Câmera de segurança em fachada com caixa de passagem", "CFTV com acabamento"],
+      ["/img/ig/post5.jpg", "Balizadores instalados em área externa", "Balizadores externos"],
+    ],
+    depEye: "Clientes", depH: "Quem contrata, recomenda",
+    deps: [["Serviço caprichado do começo ao fim. Explicaram tudo e deixaram a obra limpa.", "Cliente residencial · Garopaba"], ["Instalaram as câmeras da pousada em um dia e configuraram o app no celular de toda a equipe.", "Pousada · Praia do Rosa"], ["A fechadura digital resolveu a entrega de chaves do Airbnb. Atendimento rápido pelo WhatsApp.", "Anfitrião · Ferrugem"]],
+    regEye: "Região atendida", regH: "Garopaba e região", regLead: "Estamos perto: atendemos com agilidade as cidades e praias abaixo. Para outras cidades próximas, consulte.", mapaAlt: "Mapa com os locais de atendimento da Blum Soluções",
+    faqEye: "Dúvidas frequentes", faqH: "Perguntas que a gente mais ouve",
+    ctEye: "Contato", ctH: "Vamos resolver isso juntos", ctLead: "Mande uma mensagem pelo formulário, use o assistente ou chame direto no WhatsApp.", ctWa: "Chamar no WhatsApp", regiaoUf: "e região",
+    f: { nome: "Nome", tel: "WhatsApp", telPh: "(48) 90000-0000", serv: "Serviço", sel: "Selecione", outro: "Outro", cid: "Cidade / praia", msg: "O que você precisa?", msgPh: "Ex.: instalar 4 câmeras numa casa de temporada", site: "Site", consent: "Aceito que a Blum Soluções entre em contato e concordo com a", pol: "Política de Privacidade", enviar: "Enviar mensagem" },
+    ctaH: "Casa de temporada? Deixe tudo pronto antes do verão.", ctaP: "Revisão elétrica, câmeras com acesso remoto e fechadura digital com senha para cada hóspede.", ctaBtn: "Ver como funciona", ctaWa: "Olá! Quero preparar minha casa de temporada para o verão.",
+  },
+  en: {
+    title: "Blum Soluções — Electrician and security systems in Garopaba, Brazil",
+    desc: "English-speaking electrician in Garopaba, Brazil: security cameras, smart locks, alarms, lighting and EV chargers. Over 10 years of experience. Quick quotes on WhatsApp.",
+    eyebrow: "Garopaba area · Santa Catarina, Brazil",
+    h1a: "Electrical and security systems", h1b: "done right.",
+    lead: "Electrical installations, cameras you can watch from anywhere, smart locks, alarms and lighting — for homes, vacation rentals, guesthouses, shops and churches. Over 10 years delivering the best experience to our clients. We speak English.",
+    orc: "Quick quote", visita: "Book an on-site visit",
+    trust: [`${anos}+ years of experience`, "Brazilian NBR 5410 & Celesc standards", "English and Spanish spoken"],
+    badgeT: "A real before & after", badge: "Complete church lighting in Garopaba",
+    servEye: "Services", servH: "Electrical and security, one single team", servLead: "From the breaker panel to the camera on your phone: design, installation and maintenance — no need to juggle several contractors.",
+    mais: "Learn more", naoSabeH: "Not sure where to start?", naoSabe: "Tell the assistant what you need: it points you to the right service and gives a ballpark quote.", falar: "Talk to the assistant",
+    stats: [[`${anos}+`, "years of experience"], ["5", "specialties in one team"], [String(site.regiao.length), "towns and beaches covered"], ["3", "languages: Portuguese, English and Spanish"]],
+    passosEye: "How it works", passosH: "From first message to finished job",
+    passos: [["Tell us what you need", "Through the website assistant or on WhatsApp. Photos help a lot."], ["On-site visit", "We visit, measure and recommend the best solution for your case."], ["Clear quote", "Materials, labor and timeline in writing. No surprises."], ["Installation and warranty", "Tidy work, everything tested and a walkthrough of how to use it."]],
+    obrasEye: "Recent work", obrasH: "What we do every day", obrasLead: "See more of our work on Instagram",
+    antes: "Before", depois: "After", adH: "A church in Garopaba: from bare shell to welcoming light", adP: "Full electrical design and installation, recessed spots in the wooden ceiling, LED strips along the sides and accent lighting on the altar's stone wall.",
+    obras: [
+      ["/img/obras/corredor-led.webp", "Recessed LED profile in a hallway ceiling", "Recessed LED profile"],
+      ["/img/obras/loja-trilho.webp", "Mattress store with track spotlights and LED", "Retail track lighting"],
+      ["/img/obras/sanca-led.webp", "Ceiling cove with indirect LED lighting", "Indirect cove lighting"],
+      ["/img/obras/eletroposto.webp", "EV charging station", "EV charging station"],
+      ["/img/obras/camera-pergolado.webp", "Intelbras security camera on a pergola", "Intelbras cameras"],
+      ["/img/ig/post6.jpg", "Smart lock on a slatted wooden door", "Smart lock"],
+      ["/img/obras/camera-fachada.webp", "Security camera on a facade with junction box", "Neatly finished CCTV"],
+      ["/img/ig/post5.jpg", "Outdoor path lights", "Outdoor path lights"],
+    ],
+    depEye: "Clients", depH: "Our clients recommend us",
+    deps: [["Careful work from start to finish. They explained everything and left the place clean.", "Homeowner · Garopaba"], ["They installed the guesthouse cameras in one day and set up the app on the whole team's phones.", "Guesthouse · Praia do Rosa"], ["The smart lock solved key handovers for my Airbnb while I'm abroad. Fast replies on WhatsApp.", "Airbnb host · Ferrugem"]],
+    regEye: "Service area", regH: "Garopaba and surroundings", regLead: "We're local: we quickly cover the towns and beaches below. For other nearby towns, just ask.", mapaAlt: "Map of the areas served by Blum Soluções",
+    faqEye: "FAQ", faqH: "Questions we hear the most",
+    ctEye: "Contact", ctH: "Let's solve it together", ctLead: "Send a message through the form, use the assistant or message us directly on WhatsApp — in English.", ctWa: "Message us on WhatsApp", regiaoUf: "and surroundings",
+    f: { nome: "Name", tel: "WhatsApp (with country code)", telPh: "+1 555 123 4567", serv: "Service", sel: "Select", outro: "Other", cid: "Town / beach", msg: "What do you need?", msgPh: "E.g. install 4 cameras at my vacation home", site: "Website", consent: "I agree that Blum Soluções may contact me and accept the", pol: "Privacy Policy", enviar: "Send message" },
+    ctaH: "Own a vacation home? Get it ready before summer.", ctaP: "Electrical check, cameras you can watch from abroad and smart locks with a code for each guest.", ctaBtn: "See how it works", ctaWa: "Hi! I'd like to get my vacation home ready for summer. (I speak English)",
+  },
+  es: {
+    title: "Blum Soluções — Electricidad y seguridad electrónica en Garopaba",
+    desc: "Electricista en Garopaba que habla español: cámaras de seguridad, cerraduras digitales, alarmas, iluminación y cargadores de auto eléctrico. Más de 10 años de experiencia. Presupuesto rápido por WhatsApp.",
+    eyebrow: "Garopaba y región · Santa Catarina, Brasil",
+    h1a: "Electricidad y seguridad electrónica", h1b: "bien hechas.",
+    lead: "Instalaciones eléctricas, cámaras que ves desde el celular, cerraduras digitales, alarmas e iluminación — para casas, casas de temporada, posadas, tiendas e iglesias. Más de 10 años brindando la mejor experiencia a nuestros clientes. Hablamos español.",
+    orc: "Presupuesto rápido", visita: "Agendar visita técnica",
+    trust: [`+${anos} años de experiencia`, "Normas NBR 5410 y Celesc", "Atención en español e inglés"],
+    badgeT: "Un antes y después real", badge: "Iluminación completa de una iglesia en Garopaba",
+    servEye: "Servicios", servH: "Electricidad y seguridad con un solo equipo", servLead: "Del tablero eléctrico a la cámara en tu celular: proyecto, instalación y mantenimiento sin coordinar varios proveedores.",
+    mais: "Ver más", naoSabeH: "¿No sabes por dónde empezar?", naoSabe: "Cuéntale al asistente lo que necesitas: te indica el servicio y hace un presupuesto estimado.", falar: "Hablar con el asistente",
+    stats: [[`+${anos}`, "años de experiencia"], ["5", "especialidades en un equipo"], [String(site.regiao.length), "ciudades y playas atendidas"], ["3", "idiomas: portugués, español e inglés"]],
+    passosEye: "Cómo funciona", passosH: "Del primer contacto a la obra terminada",
+    passos: [["Cuéntanos qué necesitas", "Por el asistente del sitio o por WhatsApp. Las fotos ayudan mucho."], ["Visita técnica", "Vamos al lugar, medimos e indicamos la mejor solución para tu caso."], ["Presupuesto claro", "Material, mano de obra y plazo por escrito. Sin sorpresas."], ["Ejecución y garantía", "Instalación prolija, todo probado y explicación de cómo usarlo."]],
+    obrasEye: "Trabajos recientes", obrasH: "Nuestro trabajo en el día a día", obrasLead: "Mira más trabajos en Instagram",
+    antes: "Antes", depois: "Después", adH: "Una iglesia en Garopaba: de la obra en bruto a una luz que acoge", adP: "Proyecto e instalación eléctrica completa, spots empotrados en el techo de madera, tiras LED en los laterales y destaque en la pared de piedra del altar.",
+    obras: [
+      ["/img/obras/corredor-led.webp", "Perfil LED empotrado en el techo de un pasillo", "Perfil LED empotrado"],
+      ["/img/obras/loja-trilho.webp", "Tienda de colchones con rieles de spots y LED", "Iluminación comercial con rieles"],
+      ["/img/obras/sanca-led.webp", "Garganta con iluminación indirecta LED", "Garganta con luz indirecta"],
+      ["/img/obras/eletroposto.webp", "Electrolinera con cargador de auto eléctrico", "Cargador de auto eléctrico"],
+      ["/img/obras/camera-pergolado.webp", "Cámara de seguridad Intelbras en pérgola", "Cámaras Intelbras"],
+      ["/img/ig/post6.jpg", "Cerradura digital en puerta de madera", "Cerradura digital"],
+      ["/img/obras/camera-fachada.webp", "Cámara de seguridad en fachada con caja de paso", "CCTV con buena terminación"],
+      ["/img/ig/post5.jpg", "Balizas en área exterior", "Balizas exteriores"],
+    ],
+    depEye: "Clientes", depH: "Quien nos contrata, nos recomienda",
+    deps: [["Trabajo prolijo de principio a fin. Explicaron todo y dejaron la obra limpia.", "Cliente residencial · Garopaba"], ["Instalaron las cámaras de la posada en un día y configuraron la app en el celular de todo el equipo.", "Posada · Praia do Rosa"], ["La cerradura digital resolvió la entrega de llaves de mi Airbnb mientras estoy en Argentina. Respuesta rápida por WhatsApp.", "Anfitrión · Ferrugem"]],
+    regEye: "Zona de atención", regH: "Garopaba y región", regLead: "Estamos cerca: atendemos con rapidez las ciudades y playas de abajo. Para otras ciudades cercanas, consulta.", mapaAlt: "Mapa con las zonas atendidas por Blum Soluções",
+    faqEye: "Preguntas frecuentes", faqH: "Lo que más nos preguntan",
+    ctEye: "Contacto", ctH: "Resolvámoslo juntos", ctLead: "Envía un mensaje por el formulario, usa el asistente o escríbenos directo por WhatsApp, en español.", ctWa: "Escribir por WhatsApp", regiaoUf: "y región",
+    f: { nome: "Nombre", tel: "WhatsApp (con código de país)", telPh: "+54 9 11 1234-5678", serv: "Servicio", sel: "Seleccionar", outro: "Otro", cid: "Ciudad / playa", msg: "¿Qué necesitas?", msgPh: "Ej.: instalar 4 cámaras en mi casa de temporada", site: "Sitio", consent: "Acepto que Blum Soluções me contacte y estoy de acuerdo con la", pol: "Política de Privacidad", enviar: "Enviar mensaje" },
+    ctaH: "¿Tienes casa de temporada? Déjala lista antes del verano.", ctaP: "Revisión eléctrica, cámaras que ves desde tu país y cerradura digital con una clave para cada huésped.", ctaBtn: "Ver cómo funciona", ctaWa: "¡Hola! Quiero preparar mi casa de temporada para el verano. (Hablo español)",
+  },
+}[lang];
+
+// PENDENTE: depoimentos reais com autorização (destaque "Feedbacks" do Instagram).
+---
+<Base title={T.title} description={T.desc} jsonld={[faqLd(faqGeral[lang])]} image="/img/og-blum.jpg">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-txt">
+        <span class="eyebrow">{T.eyebrow}</span>
+        <h1>{T.h1a} <span class="grad-text">{T.h1b}</span></h1>
+        <p class="lead">{T.lead}</p>
+        <div class="hero-cta">
+          <button type="button" class="btn btn-primary btn-lg" data-chat-open="inicio"><Icon name="chat" size={20} />{T.orc}</button>
+          <button type="button" class="btn btn-ghost btn-lg" data-chat-open="vis_servico"><Icon name="agenda" size={20} />{T.visita}</button>
+        </div>
+        <ul class="hero-trust">
+          <li><Icon name="medalha" size={18} />{T.trust[0]}</li>
+          <li><Icon name="check" size={18} />{T.trust[1]}</li>
+          <li><Icon name={lang === "pt" ? "whats" : "globo"} size={18} />{T.trust[2]}</li>
+        </ul>
+      </div>
+      <div class="hero-vis">
+        <img src="/img/obras/igreja-depois.webp" alt={T.badge} width="1136" height="1200" fetchpriority="high">
+        <div class="hero-badge"><span class="dot" aria-hidden="true"></span><span><b>{T.badgeT}</b>{T.badge}</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt" id="servicos">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">{T.servEye}</span>
+        <h2>{T.servH}</h2>
+        <p class="lead">{T.servLead}</p>
+      </div>
+      <div class="cards">
+        {servicos.map((s) => (
+          <a class="card reveal" href={s.href}>
+            <span class="card-ic"><Icon name={s.icone} size={24} /></span>
+            <h3>{s.nome}</h3>
+            <p>{s.curto}</p>
+            <span class="card-more">{T.mais} <Icon name="seta" size={16} /></span>
+          </a>
+        ))}
+        <button type="button" class="card card-cta reveal" data-chat-open="inicio">
+          <span class="card-ic"><Icon name="chat" size={24} /></span>
+          <h3>{T.naoSabeH}</h3>
+          <p>{T.naoSabe}</p>
+          <span class="card-more">{T.falar} <Icon name="seta" size={16} /></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <ul class="stats reveal">
+        {T.stats.map(([n, l]) => <li><b class="grad-text">{n}</b><span>{l}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">{T.passosEye}</span>
+        <h2>{T.passosH}</h2>
+      </div>
+      <ol class="steps">
+        {T.passos.map(([h, p]) => <li class="reveal"><h3>{h}</h3><p>{p}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="obras">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">{T.obrasEye}</span>
+        <h2>{T.obrasH}</h2>
+        <p class="lead">{T.obrasLead} <a class="grad-text" href={site.redes.instagram} target="_blank" rel="noopener">{site.redes.instagramUser}</a>.</p>
+      </div>
+      <div class="antes-depois reveal">
+        <figure><img src="/img/obras/igreja-antes.webp" alt={`${T.antes}: ${T.adH}`} width="1125" height="1200" loading="lazy"><figcaption>{T.antes}</figcaption></figure>
+        <figure><img src="/img/obras/igreja-depois.webp" alt={`${T.depois}: ${T.adH}`} width="1136" height="1200" loading="lazy"><figcaption>{T.depois}</figcaption></figure>
+        <div class="ad-txt"><h3>{T.adH}</h3><p>{T.adP}</p></div>
+      </div>
+      <div class="gal">
+        {T.obras.map(([src, alt, cap]) => (
+          <figure class="reveal"><img src={src} alt={alt} width="600" height="800" loading="lazy"><figcaption>{cap}</figcaption></figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">{T.depEye}</span>
+        <h2>{T.depH}</h2>
+      </div>
+      <div class="depo">
+        {T.deps.map(([txt, quem]) => (
+          <blockquote class="reveal"><span class="stars" aria-hidden="true">★★★★★</span><p>“{txt}”</p><footer>{quem}</footer></blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="regiao">
+    <div class="wrap regiao">
+      <div class="sec-head reveal" style="margin-bottom:0">
+        <span class="eyebrow">{T.regEye}</span>
+        <h2>{T.regH}</h2>
+        <p class="lead">{T.regLead}</p>
+        <ul class="chips">
+          {site.regiao.map((c) => <li><Icon name="pin" size={16} />{c}</li>)}
+        </ul>
+      </div>
+      <div class="mapa-card reveal">
+        <img src="/img/ig/post3.jpg" alt={T.mapaAlt} width="640" height="640" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt" id="duvidas">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">{T.faqEye}</span>
+        <h2>{T.faqH}</h2>
+      </div>
+      <FaqList items={faqGeral[lang]} />
+    </div>
+  </section>
+
+  <section class="sec" id="contato">
+    <div class="wrap contato">
+      <div class="contato-lado reveal">
+        <span class="eyebrow">{T.ctEye}</span>
+        <h2>{T.ctH}</h2>
+        <p class="lead">{T.ctLead}</p>
+        <ul class="contato-lista">
+          <li><Icon name="whats" size={20} /><a href={waLink(waPadrao[lang])} target="_blank" rel="noopener">{tel}</a></li>
+          <li><Icon name="insta" size={20} /><a href={site.redes.instagram} target="_blank" rel="noopener">{site.redes.instagramUser}</a></li>
+          <li><Icon name="relogio" size={20} />{site.horario.texto[lang]}</li>
+          <li><Icon name="pin" size={20} />{site.endereco.cidade} {T.regiaoUf} · {site.endereco.uf}</li>
+        </ul>
+        <a class="btn btn-wa" href={waLink(waPadrao[lang])} target="_blank" rel="noopener" style="align-self:flex-start"><Icon name="whats" size={20} />{T.ctWa}</a>
+      </div>
+      <form class="form reveal" id="form-contato" data-origem="contato" novalidate>
+        <div class="field"><label for="c-nome">{T.f.nome}</label><input id="c-nome" name="nome" required autocomplete="name" minlength="2"></div>
+        <div class="field"><label for="c-tel">{T.f.tel}</label><input id="c-tel" name="telefone" type="tel" required autocomplete="tel" placeholder={T.f.telPh} pattern="(.*\d){10,}.*"></div>
+        <div class="field"><label for="c-serv">{T.f.serv}</label>
+          <select id="c-serv" name="Serviço">
+            <option value="">{T.f.sel}</option>
+            {servicos.map((s) => <option>{s.nome}</option>)}
+            <option>{T.f.outro}</option>
+          </select>
+        </div>
+        <div class="field"><label for="c-cid">{T.f.cid}</label><input id="c-cid" name="Cidade" list="c-cidades"><datalist id="c-cidades">{site.regiao.map((c) => <option value={c} />)}</datalist></div>
+        <div class="field full"><label for="c-msg">{T.f.msg}</label><textarea id="c-msg" name="mensagem" required placeholder={T.f.msgPh}></textarea></div>
+        <div class="hp" aria-hidden="true"><label for="c-web">{T.f.site}</label><input id="c-web" name="website" tabindex="-1" autocomplete="off"></div>
+        <label class="check full"><input type="checkbox" name="consentimento" value="sim" required> <span>{T.f.consent} <a href={r("privacidade", lang)} target="_blank">{T.f.pol}</a>.</span></label>
+        <div class="full" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+          <button type="submit" class="btn btn-primary">{T.f.enviar}</button>
+          <p class="form-msg" id="form-contato-msg" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <div>
+          <h2>{T.ctaH}</h2>
+          <p>{T.ctaP}</p>
+        </div>
+        <div class="cta-band-act">
+          <a class="btn btn-primary btn-lg" href={r("temporada", lang)}>{T.ctaBtn}</a>
+          <a class="btn btn-ghost btn-lg" href={waLink(T.ctaWa)} target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

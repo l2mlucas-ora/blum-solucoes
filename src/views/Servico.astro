@@ -1,0 +1,95 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import FaqList from "../components/FaqList.astro";
+import { servicoPorId, servicosEm, sv } from "../data/servicos";
+import { faqLd, serviceLd } from "../data/seo";
+import { site, waLink } from "../data/site";
+import { r, type Lang } from "../i18n/routes";
+
+interface Props { id: string; lang: Lang }
+const { id, lang } = Astro.props;
+const s = sv(servicoPorId[id], lang);
+const outros = servicosEm(lang).filter((o) => o.id !== id);
+const home = r("home", lang);
+const T = {
+  pt: { inicio: "Início", servicos: "Serviços", eyebrow: "Garopaba e região", pre: "Pré-orçamento", wa: (n: string) => `Olá! Vim pelo site e quero um orçamento de ${n.toLowerCase()}.`, oqueEye: "O que fazemos", oqueH: "Serviço completo, do projeto à manutenção", duvEye: "Dúvidas", duvH: (n: string) => `Perguntas sobre ${n.toLowerCase()}`, quando: "Quando chamar a Blum", agendar: "Agendar visita técnica", atendemos: "Atendemos", arred: "e arredores.", outrosEye: "Outros serviços", outrosH: "Precisa de mais alguma coisa?", alt: "trabalho da Blum Soluções" },
+  en: { inicio: "Home", servicos: "Services", eyebrow: "Garopaba area, Brazil", pre: "Ballpark quote", wa: (n: string) => `Hi! I found you on the website and would like a quote for ${n.toLowerCase()}. (I speak English)`, oqueEye: "What we do", oqueH: "Full service, from design to maintenance", duvEye: "FAQ", duvH: (n: string) => `Questions about ${n.toLowerCase()}`, quando: "When to call Blum", agendar: "Book an on-site visit", atendemos: "We cover", arred: "and surroundings.", outrosEye: "Other services", outrosH: "Need anything else?", alt: "work by Blum Soluções" },
+  es: { inicio: "Inicio", servicos: "Servicios", eyebrow: "Garopaba y región", pre: "Presupuesto estimado", wa: (n: string) => `¡Hola! Vi el sitio y quiero un presupuesto de ${n.toLowerCase()}. (Hablo español)`, oqueEye: "Qué hacemos", oqueH: "Servicio completo, del proyecto al mantenimiento", duvEye: "Preguntas", duvH: (n: string) => `Preguntas sobre ${n.toLowerCase()}`, quando: "Cuándo llamar a Blum", agendar: "Agendar visita técnica", atendemos: "Atendemos", arred: "y alrededores.", outrosEye: "Otros servicios", outrosH: "¿Necesitas algo más?", alt: "trabajo de Blum Soluções" },
+}[lang];
+---
+<Base
+  title={s.titulo}
+  description={s.descricao}
+  crumbs={[{ name: T.servicos, href: `${home}#servicos` }, { name: s.nome, href: s.href }]}
+  jsonld={[serviceLd({ name: s.nome, description: s.descricao, path: s.href }), faqLd(s.faq)]}
+  chat={s.chat}
+  image={s.imagem}
+>
+  <section class="svc-hero">
+    <div class="wrap">
+      <ol class="crumbs"><li><a href={home}>{T.inicio}</a></li><li><a href={`${home}#servicos`}>{T.servicos}</a></li><li aria-current="page">{s.nome}</li></ol>
+      <div class="svc-grid">
+        <div class="hero-txt">
+          <span class="eyebrow">{T.eyebrow}</span>
+          <h1>{s.nome}</h1>
+          <p class="lead">{s.descricao}</p>
+          <div class="hero-cta">
+            <button type="button" class="btn btn-primary btn-lg" data-chat-open={s.chat}><Icon name="chat" size={20} />{T.pre}</button>
+            <a class="btn btn-ghost btn-lg" href={waLink(T.wa(s.nome))} target="_blank" rel="noopener"><Icon name="whats" size={20} />WhatsApp</a>
+          </div>
+        </div>
+        <div class="svc-vis">
+          {s.imagem
+            ? <img src={s.imagem} alt={`${s.nome} — ${T.alt}`} width="900" height="1100">
+            : <span class="svc-vis-ic"><Icon name={s.icone} size={64} /></span>}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">{T.oqueEye}</span>
+        <h2>{T.oqueH}</h2>
+      </div>
+      <ul class="lista">
+        {s.itens.map((i) => <li class="reveal"><Icon name="check" size={20} />{i}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap duas">
+      <div>
+        <div class="sec-head reveal">
+          <span class="eyebrow">{T.duvEye}</span>
+          <h2>{T.duvH(s.nome)}</h2>
+        </div>
+        <FaqList items={s.faq} />
+      </div>
+      <aside class="box reveal">
+        <h3>{T.quando}</h3>
+        <ul>{s.quando.map((q) => <li>{q}</li>)}</ul>
+        <button type="button" class="btn btn-primary" data-chat-open="vis_servico">{T.agendar}</button>
+        <p style="color:var(--dim);font-size:.85rem">{T.atendemos} {site.regiao.slice(0, 5).join(", ")} {T.arred}</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">{T.outrosEye}</span><h2>{T.outrosH}</h2></div>
+      <div class="cards">
+        {outros.map((o) => (
+          <a class="card reveal" href={o.href}>
+            <span class="card-ic"><Icon name={o.icone} size={24} /></span>
+            <h3>{o.nome}</h3>
+            <p>{o.curto}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

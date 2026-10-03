@@ -1,0 +1,77 @@
+---
+/* Link da bio do Instagram: página enxuta, focada em conversão, com o assistente a um toque. Conteúdo em src/data/bio.ts. */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import LangSwitch from "../components/LangSwitch.astro";
+import ExtremaCredit from "../components/ExtremaCredit.astro";
+import { site, whatsapp, waLink, waPadrao, anosDeMercado } from "../data/site";
+import { destaques, links } from "../data/bio";
+import { r, type Lang } from "../i18n/routes";
+import { ui } from "../i18n/ui";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = {
+  pt: { title: "Blum Soluções — links", desc: "Orçamento rápido, visita técnica e WhatsApp da Blum Soluções: elétrica e segurança eletrônica em Garopaba e região.", tag: "Elétrica, câmeras, fechaduras digitais, alarmes e iluminação em Garopaba e região.", aberto: "Atendendo agora — resposta rápida", fechado: "Fora do horário — o assistente já adianta tudo", anos: "anos de experiência", esp: "especialidades", cid: "cidades e praias", priv: "Política de privacidade" },
+  en: { title: "Blum Soluções — links", desc: "Quick quote, on-site visit and WhatsApp for Blum Soluções: electrical and security systems in Garopaba, Brazil. We speak English.", tag: "Electrical, cameras, smart locks, alarms and lighting in Garopaba, Brazil — in English.", aberto: "Open now — quick replies", fechado: "Closed now — the assistant gets you started", anos: "years of experience", esp: "specialties", cid: "towns and beaches", priv: "Privacy policy" },
+  es: { title: "Blum Soluções — enlaces", desc: "Presupuesto rápido, visita técnica y WhatsApp de Blum Soluções: electricidad y seguridad electrónica en Garopaba. Hablamos español.", tag: "Electricidad, cámaras, cerraduras digitales, alarmas e iluminación en Garopaba — en español.", aberto: "Atendiendo ahora — respuesta rápida", fechado: "Fuera de horario — el asistente ya adelanta todo", anos: "años de experiencia", esp: "especialidades", cid: "ciudades y playas", priv: "Política de privacidad" },
+}[lang];
+const t = ui[lang];
+---
+<Base title={T.title} description={T.desc} noindex chrome={false} teaser={5000} chat="inicio">
+  <div class="bio">
+    <div class="bio-ctrl">
+      <LangSwitch />
+      <button class="icon-btn" type="button" data-theme-toggle aria-label={t.nav.tema}>
+        <Icon name="sol" size={18} class="ic-sun" /><Icon name="lua" size={18} class="ic-moon" />
+      </button>
+    </div>
+
+    <header class="bio-top">
+      <a href={r("home", lang)} class="bio-avatar" aria-label={t.nav.inicio}><img src="/img/ig/logo.jpg" alt="" width="512" height="512"></a>
+      <h1>Blum Soluções</h1>
+      <p class="bio-tag">{T.tag}</p>
+      <p class="bio-status" id="bio-status" data-aberto={T.aberto} data-fechado={T.fechado}>
+        <span class="bio-dot" aria-hidden="true"></span><span class="bio-status-txt">{site.horario.texto[lang]}</span>
+      </p>
+    </header>
+
+    <div class="bio-destaques">
+      {destaques.map((d, i) => (
+        <article class="bio-destaque" data-id={d.id} data-de={d.de} data-ate={d.ate} hidden={i !== 0}>
+          <span class="bio-selo">{d.selo[lang]}</span>
+          <h2>{d.titulo[lang]}</h2>
+          <p>{d.texto[lang]}</p>
+          {d.chat
+            ? <button type="button" class="btn btn-primary bio-cta" data-chat-open={d.chat} data-bio={`destaque-${d.id}`}>{d.cta[lang]}</button>
+            : <a class="btn btn-primary bio-cta" href={r(d.pagina!, lang)} data-bio={`destaque-${d.id}`}>{d.cta[lang]}</a>}
+        </article>
+      ))}
+    </div>
+
+    <nav class="bio-links" aria-label="Links">
+      {links.map((l) => {
+        const cls = l.principal ? "bio-link is-main" : l.wa ? "bio-link is-wa" : "bio-link";
+        const inner = (<><span class="bio-ic"><Icon name={l.icone} size={22} /></span><span class="bio-txt"><b>{l.label[lang]}</b><small>{l.sub[lang]}</small></span><span class="bio-go"><Icon name="seta" size={16} /></span></>);
+        return l.chat
+          ? <button type="button" class={cls} data-chat-open={l.chat} data-bio={l.id}>{inner}</button>
+          : <a class={cls} href={l.wa ? waLink(waPadrao[lang]) : r(l.pagina!, lang)} data-bio={l.id} {...(l.wa ? { target: "_blank", rel: "noopener" } : {})}>{inner}</a>;
+      })}
+    </nav>
+
+    <ul class="bio-prova">
+      <li><b>+{anosDeMercado - 1}</b><span>{T.anos}</span></li>
+      <li><b>5</b><span>{T.esp}</span></li>
+      <li><b>{site.regiao.length}</b><span>{T.cid}</span></li>
+    </ul>
+
+    <footer class="bio-pe">
+      <p>{site.nome} · {site.endereco.cidade}-{site.endereco.uf} · {lang === "pt" ? whatsapp.exibicao : whatsapp.internacional}</p>
+      <p><a href={r("privacidade", lang)}>{T.priv}</a></p>
+      <ExtremaCredit label={t.rodape.dev} />
+    </footer>
+  </div>
+</Base>
+<script>
+  import "../scripts/bio.ts";
+</script>

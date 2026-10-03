@@ -1,0 +1,10 @@
+---
+/* Símbolo oficial da Blum, vetorizado a partir do logo enviado pelo cliente (brand/logo-oficial-*.jpg).
+   Variantes em brand/simbolo-{colorido,branco,grafite}.svg. */
+interface Props { size?: number; wordmark?: boolean }
+const { size = 36, wordmark = true } = Astro.props;
+---
+<span class="logo">
+  <img src="/img/logo-simbolo.svg" alt="" width={Math.round(size * 634 / 734)} height={size} />
+  {wordmark && <span class="logo-txt"><b>BLUM</b><small>soluções</small></span>}
+</span>

@@ -1,0 +1,10 @@
+---
+import Servico from "../../../views/Servico.astro";
+import { servicoSlug } from "../../../i18n/routes";
+
+export function getStaticPaths() {
+  return Object.entries(servicoSlug).map(([id, s]) => ({ params: { slug: s.en }, props: { id } }));
+}
+const { id } = Astro.props;
+---
+<Servico id={id} lang="en" />

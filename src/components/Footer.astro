@@ -1,0 +1,47 @@
+---
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+import ExtremaCredit from "./ExtremaCredit.astro";
+import { servicosEm } from "../data/servicos";
+import { site, whatsapp, waLink, waPadrao } from "../data/site";
+import { idiomaDe, r } from "../i18n/routes";
+import { ui } from "../i18n/ui";
+const lang = idiomaDe(Astro.url.pathname);
+const t = ui[lang].rodape;
+const ano = new Date().getFullYear();
+---
+<footer class="ftr">
+  <div class="wrap ftr-grid">
+    <div class="ftr-brand">
+      <Logo />
+      <p>{site.slogan[lang]}. {t.sobreTxt}</p>
+      <p class="ftr-contato">
+        <a href={waLink(waPadrao[lang])} target="_blank" rel="noopener"><Icon name="whats" size={18} />{lang === "pt" ? whatsapp.exibicao : whatsapp.internacional}</a>
+        <a href={site.redes.instagram} target="_blank" rel="noopener"><Icon name="insta" size={18} />{site.redes.instagramUser}</a>
+        <span><Icon name="relogio" size={18} />{site.horario.texto[lang]}</span>
+      </p>
+    </div>
+    <nav aria-label={t.servicos}>
+      <p class="ftr-tt">{t.servicos}</p>
+      {servicosEm(lang).map((s) => <a href={s.href}>{s.nome}</a>)}
+    </nav>
+    <nav aria-label={t.atendemos}>
+      <p class="ftr-tt">{t.atendemos}</p>
+      <a href={r("eletricista", lang)}>{t.eletricista}</a>
+      <a href={r("cameras", lang)}>{t.cameras}</a>
+      <a href={r("temporada", lang)}>{t.temporada}</a>
+      <span class="ftr-reg">{site.regiao.join(" · ")}</span>
+    </nav>
+    <nav aria-label={t.blum}>
+      <p class="ftr-tt">{t.blum}</p>
+      <a href={r("sobre", lang)}>{t.sobre}</a>
+      <a href={r("bio", lang)}>{t.links}</a>
+      <a href={r("privacidade", lang)}>{t.privacidade}</a>
+      <button type="button" class="ftr-link" data-consent-open>{t.cookies}</button>
+    </nav>
+  </div>
+  <div class="wrap ftr-pe">
+    <span>© {ano} {site.nome}{site.cnpj && ` · CNPJ ${site.cnpj}`} · {site.endereco.cidade}-{site.endereco.uf}</span>
+    <ExtremaCredit label={t.dev} />
+  </div>
+</footer>

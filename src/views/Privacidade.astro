@@ -1,0 +1,62 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, whatsapp } from "../data/site";
+import { r, type Lang } from "../i18n/routes";
+// PENDENTE: revisar com o cliente (razão social, CNPJ e e-mail do encarregado de dados).
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const empresa = site.nome + (site.razaoSocial ? ` (${site.razaoSocial}${site.cnpj ? `, CNPJ ${site.cnpj}` : ""})` : "");
+const T = {
+  pt: {
+    title: "Política de privacidade", desc: "Como a Blum Soluções trata os dados pessoais enviados pelo site, pelo assistente e pelo WhatsApp, conforme a LGPD.", inicio: "Início",
+    intro: `Esta política explica como a ${empresa} trata os dados pessoais enviados por este site, em conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018).`,
+    s: [
+      ["Quais dados coletamos", "<b>Dados que você informa</b> no formulário de contato e no assistente: nome, WhatsApp, cidade ou bairro, serviço desejado, dia e período preferidos para visita e a mensagem. <b>Dados de navegação</b>: página de origem e parâmetros de campanha (UTM). <b>Medição de audiência</b> (Google Analytics), somente se você aceitar os cookies de medição."],
+      ["Para que usamos", "Exclusivamente para responder ao seu pedido: entrar em contato, elaborar orçamento e agendar visita técnica. A base legal é o seu consentimento e os procedimentos preliminares de um contrato que você solicitou. Não vendemos nem compartilhamos seus dados para marketing de terceiros."],
+      ["Com quem compartilhamos", "Usamos fornecedores para operar o site e entregar sua mensagem à nossa equipe (hospedagem Cloudflare, envio de e-mail e, se você aceitar, Google Analytics). Eles tratam os dados apenas para prestar esse serviço."],
+      ["Por quanto tempo guardamos", "Pelo tempo necessário para atender o seu pedido e cumprir obrigações legais. Se não houver contratação, os dados de contato são descartados em até 12 meses."],
+      ["Cookies", "O site usa armazenamento essencial do navegador para lembrar a conversa com o assistente, o idioma e o tema escolhido. Cookies de medição só são ativados com o seu aceite, e você pode mudar a escolha a qualquer momento em “Preferências de cookies”, no rodapé."],
+      ["Seus direitos", `Você pode pedir acesso, correção ou exclusão dos seus dados e revogar o consentimento a qualquer momento pelo WhatsApp ${whatsapp.exibicao}.`],
+    ],
+    atual: "Última atualização: outubro de 2026.",
+  },
+  en: {
+    title: "Privacy policy", desc: "How Blum Soluções handles personal data sent through the website, the assistant and WhatsApp, under Brazil's data protection law (LGPD).", inicio: "Home",
+    intro: `This policy explains how ${empresa} handles personal data sent through this website, in compliance with Brazil's General Data Protection Law (LGPD, Law 13.709/2018).`,
+    s: [
+      ["What we collect", "<b>Data you provide</b> in the contact form and the assistant: name, WhatsApp number, town or neighborhood, service needed, preferred visit day and time, and your message. <b>Browsing data</b>: landing page and campaign parameters (UTM). <b>Audience measurement</b> (Google Analytics), only if you accept measurement cookies."],
+      ["How we use it", "Only to answer your request: contact you, prepare a quote and schedule an on-site visit. The legal basis is your consent and pre-contractual steps you requested. We do not sell or share your data for third-party marketing."],
+      ["Who we share it with", "We use providers to run the website and deliver your message to our team (Cloudflare hosting, email delivery and, if you accept, Google Analytics). They process data only to provide that service."],
+      ["How long we keep it", "As long as needed to handle your request and meet legal obligations. If no job is hired, contact data is deleted within 12 months."],
+      ["Cookies", "The site uses essential browser storage to remember your conversation with the assistant, your language and theme. Measurement cookies are only enabled with your consent, and you can change your choice anytime under “Cookie preferences” in the footer."],
+      ["Your rights", `You may request access, correction or deletion of your data and withdraw consent at any time via WhatsApp ${whatsapp.internacional}.`],
+    ],
+    atual: "Last updated: October 2026. In case of discrepancy, the Portuguese version prevails.",
+  },
+  es: {
+    title: "Política de privacidad", desc: "Cómo Blum Soluções trata los datos personales enviados por el sitio, el asistente y WhatsApp, según la ley brasileña de protección de datos (LGPD).", inicio: "Inicio",
+    intro: `Esta política explica cómo ${empresa} trata los datos personales enviados por este sitio, conforme a la Ley General de Protección de Datos de Brasil (LGPD, Ley 13.709/2018).`,
+    s: [
+      ["Qué datos recopilamos", "<b>Datos que nos das</b> en el formulario de contacto y en el asistente: nombre, WhatsApp, ciudad o barrio, servicio deseado, día y horario preferidos para la visita y tu mensaje. <b>Datos de navegación</b>: página de origen y parámetros de campaña (UTM). <b>Medición de audiencia</b> (Google Analytics), solo si aceptas las cookies de medición."],
+      ["Para qué los usamos", "Solo para responder tu pedido: contactarte, hacer el presupuesto y agendar la visita técnica. La base legal es tu consentimiento y los pasos previos a un contrato que solicitaste. No vendemos ni compartimos tus datos para marketing de terceros."],
+      ["Con quién los compartimos", "Usamos proveedores para operar el sitio y entregar tu mensaje a nuestro equipo (hosting Cloudflare, envío de e-mail y, si aceptas, Google Analytics). Ellos tratan los datos solo para prestar ese servicio."],
+      ["Por cuánto tiempo los guardamos", "El tiempo necesario para atender tu pedido y cumplir obligaciones legales. Si no hay contratación, los datos de contacto se eliminan en hasta 12 meses."],
+      ["Cookies", "El sitio usa almacenamiento esencial del navegador para recordar la conversación con el asistente, el idioma y el tema. Las cookies de medición solo se activan con tu consentimiento, y puedes cambiar la elección en cualquier momento en “Preferencias de cookies”, en el pie de página."],
+      ["Tus derechos", `Puedes pedir acceso, corrección o eliminación de tus datos y revocar el consentimiento en cualquier momento por WhatsApp ${whatsapp.internacional}.`],
+    ],
+    atual: "Última actualización: octubre de 2026. En caso de divergencia, prevalece la versión en portugués.",
+  },
+}[lang];
+---
+<Base title={T.title} description={T.desc} crumbs={[{ name: T.title, href: r("privacidade", lang) }]}>
+  <section class="sec">
+    <div class="wrap prosa">
+      <ol class="crumbs"><li><a href={r("home", lang)}>{T.inicio}</a></li><li aria-current="page">{T.title}</li></ol>
+      <h1>{T.title}</h1>
+      <p>{T.intro}</p>
+      {T.s.map(([h, p], i) => (<><h2 id={i === 4 ? "cookies" : undefined}>{h}</h2><p set:html={p} /></>))}
+      <p style="color:var(--dim)">{T.atual}</p>
+    </div>
+  </section>
+</Base>
