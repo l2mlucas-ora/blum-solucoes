@@ -13,7 +13,7 @@ const FOCO: Record<string, string> = {
   "/img/obras/loja-trilho.webp": "50% 35%",
   "/img/obras/sanca-led.webp": "50% 40%",
   "/img/obras/fechadura.webp": "32% 55%",
-  "/img/ig/post5.jpg": "50% 45%",
+  "/img/obras/balizadores.webp": "42% 60%",
   "/img/obras/responsavel.webp": "50% 35%",
 };
 
