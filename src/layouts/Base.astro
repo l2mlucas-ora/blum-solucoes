@@ -45,7 +45,7 @@ const previa = import.meta.env.PUBLIC_PREVIA === "1";
 <html lang={htmlLang[lang]}>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>{fullTitle}</title>
 <meta name="description" content={description}>
 {noindex || previa ? <meta name="robots" content={previa ? "noindex, nofollow" : "noindex, follow"}> : <link rel="canonical" href={canonical}>}
@@ -68,6 +68,8 @@ const previa = import.meta.env.PUBLIC_PREVIA === "1";
 <meta name="geo.region" content={site.endereco.regiaoIso}>
 <meta name="geo.placename" content={site.endereco.cidade}>
 <script is:inline>
+// Sem zoom por pinça (como na Target). iOS antigo ignora touch-action: bloqueia o gesto direto.
+document.addEventListener("gesturestart",function(e){e.preventDefault()},{passive:false});
 try{var t=localStorage.getItem("blum-theme");
 if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}
 </script>
