@@ -38,7 +38,7 @@ export const portfolio: Obra[] = [
   o("quarto-arandelas", "iluminacao", "Quarto com arandelas e luz indireta", "Bedroom with sconces and indirect light", "Dormitorio con apliques y luz indirecta"),
   o("fotocelula-portao", "controle-de-acesso", "Fotocélula de segurança no portão", "Safety photocell on the gate", "Fotocélula de seguridad en el portón"),
   o("fachada-comercial-noite", "iluminacao", "Fachada comercial iluminada à noite", "Commercial facade lit at night", "Fachada comercial iluminada de noche"),
-  o("camera-fachada", "seguranca-eletronica", "CFTV com caixa de passagem e acabamento", "CCTV with junction box and clean finish", "CCTV con caja de paso y buena terminación"),
+  o("camera-fachada", "cameras-cftv", "CFTV com caixa de passagem e acabamento", "CCTV with junction box and clean finish", "CCTV con caja de paso y buena terminación"),
   o("sala-jantar-pendente", "iluminacao", "Sala de jantar com pendente e spots", "Dining room with pendant and spots", "Comedor con colgante y spots"),
   o("tomada-externa", "eletrica", "Tomada externa com eletroduto", "Outdoor outlet with conduit", "Enchufe exterior con conducto"),
   o("pergolado-noite", "iluminacao", "Pergolado iluminado à noite", "Pergola lit at night", "Pérgola iluminada de noche"),
