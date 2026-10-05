@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Icon from "../components/Icon.astro";
 import FaqList from "../components/FaqList.astro";
+import Credenciais from "../components/Credenciais.astro";
 import { servicosEm } from "../data/servicos";
 import { faqGeral } from "../data/faq";
 import { faqLd } from "../data/seo";
@@ -23,7 +24,7 @@ const T = {
     h1a: "Elétrica e segurança eletrônica", h1b: "feitas do jeito certo.",
     lead: "Instalações elétricas, câmeras com acesso pelo celular, fechaduras digitais, alarmes e iluminação — para casas, casas de temporada, pousadas, lojas e igrejas. Há mais de 10 anos entregando a melhor experiência aos nossos clientes.",
     orc: "Orçamento rápido", visita: "Agendar visita técnica",
-    trust: [`+${anos} anos de experiência`, "Normas NBR 5410 e Celesc", "Atendimento pelo WhatsApp"],
+    trust: [`+${anos} anos de experiência`, "Técnico em Eletrônica responsável", "Atendimento pelo WhatsApp"],
     badgeT: "Antes e depois de verdade", badge: "Iluminação completa de igreja em Garopaba",
     servEye: "Serviços", servH: "Tudo de elétrica e segurança, com uma equipe só", servLead: "Do quadro de luz à câmera no celular: projeto, instalação e manutenção sem você precisar coordenar vários prestadores.",
     mais: "Saiba mais", naoSabeH: "Não sabe por onde começar?", naoSabe: "Conte o que precisa ao assistente: ele indica o serviço e já faz o pré-orçamento.", falar: "Falar com o assistente",
@@ -57,7 +58,7 @@ const T = {
     h1a: "Electrical and security systems", h1b: "done right.",
     lead: "Electrical installations, cameras you can watch from anywhere, smart locks, alarms and lighting — for homes, vacation rentals, guesthouses, shops and churches. Over 10 years delivering the best experience to our clients. We speak English.",
     orc: "Quick quote", visita: "Book an on-site visit",
-    trust: [`${anos}+ years of experience`, "Brazilian NBR 5410 & Celesc standards", "English and Spanish spoken"],
+    trust: [`${anos}+ years of experience`, "Led by an electronics technician", "English and Spanish spoken"],
     badgeT: "A real before & after", badge: "Complete church lighting in Garopaba",
     servEye: "Services", servH: "Electrical and security, one single team", servLead: "From the breaker panel to the camera on your phone: design, installation and maintenance — no need to juggle several contractors.",
     mais: "Learn more", naoSabeH: "Not sure where to start?", naoSabe: "Tell the assistant what you need: it points you to the right service and gives a ballpark quote.", falar: "Talk to the assistant",
@@ -91,7 +92,7 @@ const T = {
     h1a: "Electricidad y seguridad electrónica", h1b: "bien hechas.",
     lead: "Instalaciones eléctricas, cámaras que ves desde el celular, cerraduras digitales, alarmas e iluminación — para casas, casas de temporada, posadas, tiendas e iglesias. Más de 10 años brindando la mejor experiencia a nuestros clientes. Hablamos español.",
     orc: "Presupuesto rápido", visita: "Agendar visita técnica",
-    trust: [`+${anos} años de experiencia`, "Normas NBR 5410 y Celesc", "Atención en español e inglés"],
+    trust: [`+${anos} años de experiencia`, "Técnico en Electrónica responsable", "Atención en español e inglés"],
     badgeT: "Un antes y después real", badge: "Iluminación completa de una iglesia en Garopaba",
     servEye: "Servicios", servH: "Electricidad y seguridad con un solo equipo", servLead: "Del tablero eléctrico a la cámara en tu celular: proyecto, instalación y mantenimiento sin coordinar varios proveedores.",
     mais: "Ver más", naoSabeH: "¿No sabes por dónde empezar?", naoSabe: "Cuéntale al asistente lo que necesitas: te indica el servicio y hace un presupuesto estimado.", falar: "Hablar con el asistente",
@@ -177,6 +178,7 @@ const T = {
       <ul class="stats reveal">
         {T.stats.map(([n, l]) => <li><b class="grad-text">{n}</b><span>{l}</span></li>)}
       </ul>
+      <div style="margin-top:clamp(28px,4vw,48px)"><Credenciais lang={lang} variante="compacto" /></div>
     </div>
   </section>
 

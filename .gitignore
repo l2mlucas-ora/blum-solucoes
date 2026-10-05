@@ -6,3 +6,7 @@
 dist/
 node_modules/
 .claude/
+
+# Originais de fotos (pesados) — só as versões otimizadas vão para public/
+fotos-novas/*
+!fotos-novas/LEIA-ME.txt

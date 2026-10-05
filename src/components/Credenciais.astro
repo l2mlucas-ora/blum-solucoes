@@ -1,0 +1,39 @@
+---
+/* "Quem assina o trabalho": formação do responsável técnico em destaque premium.
+   variante="completo" (página Sobre) ou "compacto" (home, com link para Sobre). Dados em src/data/site.ts → responsavel. */
+import Icon from "./Icon.astro";
+import { responsavel } from "../data/site";
+import { r, type Lang } from "../i18n/routes";
+
+interface Props { lang: Lang; variante?: "completo" | "compacto" }
+const { lang, variante = "completo" } = Astro.props;
+const R = responsavel;
+const T = {
+  pt: { eyebrow: "Quem assina o trabalho", h: "Formação técnica de verdade, em cada instalação", lead: "Cada projeto da Blum passa pelas mãos de um técnico formado e especializado — do planejamento à entrega.", formado: "Formação", espec: "Especializações", sobre: "Conheça a nossa história" },
+  en: { eyebrow: "Who signs the work", h: "Real technical training behind every installation", lead: "Every Blum project is handled by a trained, specialized technician — from planning to handover.", formado: "Training", espec: "Specializations", sobre: "Read our story" },
+  es: { eyebrow: "Quién firma el trabajo", h: "Formación técnica real en cada instalación", lead: "Cada proyecto de Blum pasa por las manos de un técnico formado y especializado — de la planificación a la entrega.", formado: "Formación", espec: "Especializaciones", sobre: "Conoce nuestra historia" },
+}[lang];
+---
+<div class:list={["cred", `cred-${variante}`, "reveal"]}>
+  <div class="cred-id">
+    <span class="eyebrow">{T.eyebrow}</span>
+    <p class="cred-nome">{R.nome}</p>
+    <p class="cred-cargo">{R.cargo[lang]} · Blum Soluções</p>
+    <div class="cred-selo">
+      <span class="cred-selo-ic"><Icon name="formacao" size={26} /></span>
+      <span><small>{T.formado}</small><b>{R.formacao[lang]}</b></span>
+    </div>
+    {variante === "completo" ? <p class="cred-lead">{T.lead}</p> : <a class="cred-link" href={r("sobre", lang)}>{T.sobre} <Icon name="seta" size={16} /></a>}
+  </div>
+  <div class="cred-lista">
+    <p class="cred-tt">{T.espec}</p>
+    <ul>
+      {R.especializacoes.map((e) => (
+        <li>
+          <span class="cred-ic"><Icon name={e.icone} size={22} /></span>
+          <span><b>{e.nome[lang]}</b>{variante === "completo" && <small>{e.desc[lang]}</small>}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>

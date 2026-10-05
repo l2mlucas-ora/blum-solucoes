@@ -1,4 +1,4 @@
-import { site, whatsapp, abs } from "./site";
+import { site, whatsapp, abs, responsavel } from "./site";
 import { r, type Lang, type T } from "../i18n/routes";
 
 export interface Crumb { name: string; href: string }
@@ -33,6 +33,13 @@ export function organizationLd(lang: Lang = "pt") {
     ],
     areaServed: area(),
     knowsLanguage: ["pt-BR", "en", "es"],
+    employee: {
+      "@type": "Person",
+      name: responsavel.nome,
+      jobTitle: responsavel.cargo[lang],
+      hasCredential: { "@type": "EducationalOccupationalCredential", credentialCategory: "degree", name: responsavel.formacao[lang] },
+      knowsAbout: responsavel.especializacoes.map((e) => e.nome[lang]),
+    },
     priceRange: "$$",
     sameAs: [site.redes.instagram],
   };

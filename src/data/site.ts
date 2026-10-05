@@ -54,6 +54,23 @@ export const site = {
   regiao: ["Garopaba", "Imbituba", "Paulo Lopes", "Imaruí", "Praia do Rosa", "Ibiraquera", "Siriú", "Ferrugem", "Encantada", "Palhocinha"],
 } as const;
 
+/** Responsável técnico — formação exibida na página Sobre (completa) e na home (resumida). */
+export const responsavel = {
+  nome: "Fernando Blum",
+  cargo: { pt: "Responsável técnico", en: "Technical lead", es: "Responsable técnico" } as T,
+  formacao: { pt: "Técnico em Eletrônica", en: "Electronics Technician", es: "Técnico en Electrónica" } as T,
+  especializacoes: [
+    { icone: "rede", nome: { pt: "Redes", en: "Networking", es: "Redes" } as T,
+      desc: { pt: "Infraestrutura de rede e Wi-Fi que sustenta câmeras, alarmes e automação.", en: "Network and Wi-Fi infrastructure behind cameras, alarms and automation.", es: "Infraestructura de red y Wi-Fi que sostiene cámaras, alarmas y automatización." } as T },
+    { icone: "fogo", nome: { pt: "Sistemas de prevenção de incêndio", en: "Fire prevention systems", es: "Sistemas de prevención de incendios" } as T,
+      desc: { pt: "Detecção e alarme de incêndio para residências e comércios.", en: "Fire detection and alarm systems for homes and businesses.", es: "Detección y alarma de incendio para casas y comercios." } as T },
+    { icone: "chave", nome: { pt: "Controle de acesso", en: "Access control", es: "Control de acceso" } as T,
+      desc: { pt: "Fechaduras digitais, biometria, interfonia e gestão de acessos.", en: "Smart locks, biometrics, intercoms and access management.", es: "Cerraduras digitales, biometría, porteros y gestión de accesos." } as T },
+    { icone: "radar", nome: { pt: "Alarme perimetral com IA", en: "AI perimeter alarms", es: "Alarma perimetral con IA" } as T,
+      desc: { pt: "Inteligência artificial que distingue pessoas e veículos e reduz alarmes falsos.", en: "Artificial intelligence that tells people and vehicles apart and cuts false alarms.", es: "Inteligencia artificial que distingue personas y vehículos y reduce falsas alarmas." } as T },
+  ],
+} as const;
+
 /** URL absoluta de um caminho do site ("/en/" → "https://…/en/"), respeitando a subpasta da prévia. */
 export const abs = (path: string) => site.url + (path.startsWith("/") ? path : "/" + path);
 

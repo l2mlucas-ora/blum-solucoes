@@ -430,3 +430,26 @@ a.chat-opt[data-wa] { border-color: var(--wa); background: rgba(37, 211, 102, .1
 /* Retrato (página Sobre): foto de origem pequena — moldura mais contida para não pixelar. */
 .svc-retrato { max-width: 420px; justify-self: center }
 @media (max-width: 920px) { .svc-retrato { max-width: 300px; margin: 0 auto } }
+
+/* ---------- credenciais do responsável técnico (premium) ---------- */
+.cred { position: relative; display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(24px, 4vw, 56px); padding: clamp(26px, 4vw, 48px); border-radius: 26px; background: radial-gradient(120% 140% at 0% 0%, rgba(47, 199, 159, .16), transparent 55%), radial-gradient(120% 140% at 100% 100%, rgba(45, 127, 211, .18), transparent 55%), var(--surface); overflow: hidden; isolation: isolate }
+.cred::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, rgba(47, 199, 159, .7), rgba(255, 255, 255, .06) 40%, rgba(45, 127, 211, .7)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; z-index: -1 }
+.cred-id { display: flex; flex-direction: column; gap: 10px; justify-content: center }
+.cred-nome { font: 800 clamp(2rem, 4.2vw, 3rem)/1.05 var(--ff-display); letter-spacing: -.02em; color: var(--text-hi); margin-top: 6px }
+.cred-cargo { color: var(--dim); font-weight: 600; letter-spacing: .02em }
+.cred-selo { display: inline-flex; align-items: center; gap: 14px; align-self: flex-start; margin-top: 12px; padding: 12px 18px 12px 12px; border-radius: 16px; background: var(--bg); border: 1px solid var(--accent-edge); box-shadow: 0 10px 30px rgba(45, 127, 211, .15) }
+.cred-selo-ic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--grad); color: #fff; flex: none }
+.cred-selo small { display: block; font: 700 .66rem/1 var(--ff-display); letter-spacing: .16em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 5px }
+.cred-selo b { font: 800 1.12rem/1.2 var(--ff-display); color: var(--text-hi) }
+.cred-lead { color: var(--text); margin-top: 10px; max-width: 42ch }
+.cred-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-weight: 700; color: var(--accent-text) }
+.cred-tt { font: 700 .72rem/1 var(--ff-display); letter-spacing: .16em; text-transform: uppercase; color: var(--dim); margin-bottom: 14px }
+.cred-lista ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 12px }
+.cred-lista li { display: flex; gap: 14px; align-items: flex-start; padding: 16px; border-radius: 16px; background: color-mix(in srgb, var(--bg) 70%, transparent); border: 1px solid var(--line) }
+.cred-lista li b { display: block; color: var(--text-hi); font-weight: 750; line-height: 1.3 }
+.cred-lista li small { display: block; color: var(--dim); font-size: .86rem; line-height: 1.45; margin-top: 4px }
+.cred-ic { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); flex: none }
+.cred-compacto .cred-lista li { align-items: center; padding: 14px }
+@media (max-width: 920px) { .cred { grid-template-columns: 1fr } .cred-lista ul { grid-template-columns: 1fr 1fr } }
+.cred-compacto .cred-lista ul { grid-template-columns: 1fr 1fr }
+@media (max-width: 560px) { .cred-lista ul, .cred-compacto .cred-lista ul { grid-template-columns: 1fr } .cred-selo { align-self: stretch } }

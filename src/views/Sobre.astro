@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Icon from "../components/Icon.astro";
+import Credenciais from "../components/Credenciais.astro";
 import { site, waLink, waPadrao } from "../data/site";
 import { foco } from "../data/fotos";
 import { r, type Lang } from "../i18n/routes";
@@ -11,31 +12,31 @@ const T = {
   pt: {
     title: "Sobre a Blum Soluções", desc: "Conheça a Blum Soluções: mais de 10 anos em elétrica e segurança eletrônica em Garopaba e região, com atendimento próximo, organização e acabamento caprichado.",
     inicio: "Início", crumb: "Sobre", eyebrow: "Sobre nós", h1a: "Uma empresa local, com", h1b: "cuidado de dono.",
-    p1: "A Blum Soluções nasceu em Garopaba para resolver elétrica e segurança eletrônica com seriedade: chegar no horário, explicar o que vai ser feito, trabalhar com organização e entregar a obra limpa.",
+    p1: "À frente da Blum está Fernando Blum, técnico em eletrônica. A empresa nasceu em Garopaba para resolver elétrica e segurança eletrônica com seriedade: chegar no horário, explicar o que vai ser feito, trabalhar com organização e entregar a obra limpa.",
     p2: "Há mais de 10 anos atendemos casas, casas de temporada, pousadas, lojas, igrejas, condomínios e comércios da região — e boa parte dos novos clientes chega por indicação. Atendemos também em inglês e espanhol.",
-    falar: "Falar com a gente", alt: "Responsável pela Blum Soluções",
+    falar: "Falar com a gente", alt: "Fernando Blum, responsável técnico da Blum Soluções",
     comoEye: "Como trabalhamos", comoH: "O que você pode esperar",
-    cards: [["check", "Normas e segurança", "Instalações conforme NBR 5410 e padrões Celesc, com materiais certificados e equipe treinada em NR-10."], ["ferramenta", "Organização", "Ferramentas limpas, carro organizado e obra entregue sem bagunça — como você vê no nosso Instagram."], ["chat", "Conversa clara", "Orçamento por escrito, explicação do que foi feito e de como usar cada sistema — em português, inglês ou espanhol."], ["medalha", "Garantia", "Garantia da mão de obra e suporte depois da instalação pelo WhatsApp."]],
+    cards: [["radar", "Tecnologia atual", "Câmeras, alarmes com inteligência artificial e automação de última geração, escolhidos para cada caso."], ["ferramenta", "Organização", "Ferramentas limpas, carro organizado e obra entregue sem bagunça — como você vê no nosso Instagram."], ["chat", "Conversa clara", "Orçamento por escrito, explicação do que foi feito e de como usar cada sistema — em português, inglês ou espanhol."], ["medalha", "Garantia", "Garantia da mão de obra e suporte depois da instalação pelo WhatsApp."]],
     atendemos: "Atendemos", regiao: "e região", agendar: "Agendar visita",
   },
   en: {
     title: "About Blum Soluções", desc: "Meet Blum Soluções: over 10 years of electrical and security work in Garopaba, Brazil — local, organized, careful finishing, and English-speaking.",
     inicio: "Home", crumb: "About", eyebrow: "About us", h1a: "A local company that works", h1b: "like it's our own home.",
-    p1: "Blum Soluções was born in Garopaba to deliver electrical and security work seriously: show up on time, explain what will be done, work tidily and leave the place clean.",
+    p1: "Blum is led by Fernando Blum, an electronics technician. The company was born in Garopaba to deliver electrical and security work seriously: show up on time, explain what will be done, work tidily and leave the place clean.",
     p2: "For over 10 years we've served homes, vacation rentals, guesthouses, shops, churches, condos and businesses in the area — and many new clients come by referral. We speak English and Spanish, and many clients are foreign homeowners.",
-    falar: "Talk to us", alt: "Blum Soluções founder",
+    falar: "Talk to us", alt: "Fernando Blum, technical lead at Blum Soluções",
     comoEye: "How we work", comoH: "What you can expect",
-    cards: [["check", "Standards and safety", "Installations to Brazilian NBR 5410 and Celesc standards, certified materials and an NR-10 trained team."], ["ferramenta", "Tidiness", "Clean tools, an organized van and a job left spotless — as you can see on our Instagram."], ["chat", "Clear communication", "Written quotes and a walkthrough of what was done and how to use each system — in English, Spanish or Portuguese."], ["medalha", "Warranty", "Guaranteed labor and support after installation on WhatsApp."]],
+    cards: [["radar", "Up-to-date technology", "Cameras, AI-powered alarms and the latest automation, chosen for each case."], ["ferramenta", "Tidiness", "Clean tools, an organized van and a job left spotless — as you can see on our Instagram."], ["chat", "Clear communication", "Written quotes and a walkthrough of what was done and how to use each system — in English, Spanish or Portuguese."], ["medalha", "Warranty", "Guaranteed labor and support after installation on WhatsApp."]],
     atendemos: "We cover", regiao: "and surroundings", agendar: "Book a visit",
   },
   es: {
     title: "Sobre Blum Soluções", desc: "Conoce Blum Soluções: más de 10 años en electricidad y seguridad electrónica en Garopaba y región — atención cercana, prolijidad y buena terminación, en español.",
     inicio: "Inicio", crumb: "Nosotros", eyebrow: "Sobre nosotros", h1a: "Una empresa local, con", h1b: "cuidado de dueño.",
-    p1: "Blum Soluções nació en Garopaba para resolver electricidad y seguridad electrónica con seriedad: llegar a horario, explicar lo que se va a hacer, trabajar con orden y entregar la obra limpia.",
+    p1: "Al frente de Blum está Fernando Blum, técnico en electrónica. La empresa nació en Garopaba para resolver electricidad y seguridad electrónica con seriedad: llegar a horario, explicar lo que se va a hacer, trabajar con orden y entregar la obra limpia.",
     p2: "Hace más de 10 años atendemos casas, casas de temporada, posadas, tiendas, iglesias, condominios y comercios de la región — y muchos clientes nuevos llegan por recomendación. Hablamos español e inglés, y muchos clientes son propietarios extranjeros.",
-    falar: "Hablar con nosotros", alt: "Responsable de Blum Soluções",
+    falar: "Hablar con nosotros", alt: "Fernando Blum, responsable técnico de Blum Soluções",
     comoEye: "Cómo trabajamos", comoH: "Qué puedes esperar",
-    cards: [["check", "Normas y seguridad", "Instalaciones según la NBR 5410 y las reglas de Celesc, con materiales certificados y equipo capacitado en NR-10."], ["ferramenta", "Orden", "Herramientas limpias, vehículo organizado y obra entregada sin desorden — como ves en nuestro Instagram."], ["chat", "Comunicación clara", "Presupuesto por escrito y explicación de lo que se hizo y de cómo usar cada sistema — en español, inglés o portugués."], ["medalha", "Garantía", "Garantía de la mano de obra y soporte después de la instalación por WhatsApp."]],
+    cards: [["radar", "Tecnología actual", "Cámaras, alarmas con inteligencia artificial y automatización de última generación, elegidas para cada caso."], ["ferramenta", "Orden", "Herramientas limpias, vehículo organizado y obra entregada sin desorden — como ves en nuestro Instagram."], ["chat", "Comunicación clara", "Presupuesto por escrito y explicación de lo que se hizo y de cómo usar cada sistema — en español, inglés o portugués."], ["medalha", "Garantía", "Garantía de la mano de obra y soporte después de la instalación por WhatsApp."]],
     atendemos: "Atendemos", regiao: "y región", agendar: "Agendar visita",
   },
 }[lang];
@@ -57,6 +58,9 @@ const T = {
         <div class="svc-vis svc-retrato"><img src="/img/obras/responsavel.webp" alt={T.alt} width="640" height="720" style={foco("/img/obras/responsavel.webp")}></div>
       </div>
     </div>
+  </section>
+  <section class="sec" style="padding-top:0">
+    <div class="wrap"><Credenciais lang={lang} /></div>
   </section>
   <section class="sec sec-alt">
     <div class="wrap">

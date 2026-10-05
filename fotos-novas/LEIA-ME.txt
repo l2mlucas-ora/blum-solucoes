@@ -1,0 +1,3 @@
+Coloque aqui as fotos novas das obras (qualquer formato: jpg, png, heic, webp).
+Esta pasta NÃO é apagada pelo build (diferente de dist/, que é recriada a cada build).
+Os originais não vão para o GitHub; só as versões otimizadas em public/img/obras/.
