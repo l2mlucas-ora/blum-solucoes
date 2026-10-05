@@ -17,7 +17,7 @@ const T = {
     falar: "Falar com a gente", alt: "Fernando Blum, responsável técnico da Blum Soluções",
     comoEye: "Como trabalhamos", comoH: "O que você pode esperar",
     cards: [["radar", "Tecnologia atual", "Câmeras, alarmes com inteligência artificial e automação de última geração, escolhidos para cada caso."], ["ferramenta", "Organização", "Ferramentas limpas, carro organizado e obra entregue sem bagunça — como você vê no nosso Instagram."], ["chat", "Conversa clara", "Orçamento por escrito, explicação do que foi feito e de como usar cada sistema — em português, inglês ou espanhol."], ["medalha", "Garantia", "Garantia da mão de obra e suporte depois da instalação pelo WhatsApp."]],
-    atendemos: "Atendemos", regiao: "e região", agendar: "Agendar visita",
+    atendemos: "Atendemos", regiao: "e região", agendar: "Agendar visita", van: "Equipe Blum a caminho de mais uma obra", vanAlt: "Van da Blum Soluções em frente a uma obra",
   },
   en: {
     title: "About Blum Soluções", desc: "Meet Blum Soluções: over 10 years of electrical and security work in Garopaba, Brazil — local, organized, careful finishing, and English-speaking.",
@@ -27,7 +27,7 @@ const T = {
     falar: "Talk to us", alt: "Fernando Blum, technical lead at Blum Soluções",
     comoEye: "How we work", comoH: "What you can expect",
     cards: [["radar", "Up-to-date technology", "Cameras, AI-powered alarms and the latest automation, chosen for each case."], ["ferramenta", "Tidiness", "Clean tools, an organized van and a job left spotless — as you can see on our Instagram."], ["chat", "Clear communication", "Written quotes and a walkthrough of what was done and how to use each system — in English, Spanish or Portuguese."], ["medalha", "Warranty", "Guaranteed labor and support after installation on WhatsApp."]],
-    atendemos: "We cover", regiao: "and surroundings", agendar: "Book a visit",
+    atendemos: "We cover", regiao: "and surroundings", agendar: "Book a visit", van: "The Blum team on the way to another job", vanAlt: "Blum Soluções van in front of a job site",
   },
   es: {
     title: "Sobre Blum Soluções", desc: "Conoce Blum Soluções: más de 10 años en electricidad y seguridad electrónica en Garopaba y región — atención cercana, prolijidad y buena terminación, en español.",
@@ -37,7 +37,7 @@ const T = {
     falar: "Hablar con nosotros", alt: "Fernando Blum, responsable técnico de Blum Soluções",
     comoEye: "Cómo trabajamos", comoH: "Qué puedes esperar",
     cards: [["radar", "Tecnología actual", "Cámaras, alarmas con inteligencia artificial y automatización de última generación, elegidas para cada caso."], ["ferramenta", "Orden", "Herramientas limpias, vehículo organizado y obra entregada sin desorden — como ves en nuestro Instagram."], ["chat", "Comunicación clara", "Presupuesto por escrito y explicación de lo que se hizo y de cómo usar cada sistema — en español, inglés o portugués."], ["medalha", "Garantía", "Garantía de la mano de obra y soporte después de la instalación por WhatsApp."]],
-    atendemos: "Atendemos", regiao: "y región", agendar: "Agendar visita",
+    atendemos: "Atendemos", regiao: "y región", agendar: "Agendar visita", van: "El equipo Blum camino a otra obra", vanAlt: "Camioneta de Blum Soluções frente a una obra",
   },
 }[lang];
 ---
@@ -65,6 +65,7 @@ const T = {
   <section class="sec sec-alt">
     <div class="wrap">
       <div class="sec-head reveal"><span class="eyebrow">{T.comoEye}</span><h2>{T.comoH}</h2></div>
+      <figure class="sobre-van reveal"><img src="/img/obras/van-blum.webp" alt={T.vanAlt} width="960" height="1280" loading="lazy" style={foco("/img/obras/van-blum.webp")}><figcaption>{T.van}</figcaption></figure>
       <div class="cards">
         {T.cards.map(([ic, h, p]) => <div class="card reveal"><span class="card-ic"><Icon name={ic} size={24} /></span><h3>{h}</h3><p>{p}</p></div>)}
       </div>

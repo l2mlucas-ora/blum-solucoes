@@ -6,14 +6,13 @@
 const FOCO: Record<string, string> = {
   "/img/obras/igreja-depois.webp": "50% 62%",
   "/img/obras/igreja-antes.webp": "50% 55%",
+  "/img/obras/van-blum.webp": "50% 70%",
+  "/img/obras/motor-portao.webp": "50% 70%",
+  "/img/obras/predio-por-do-sol.webp": "50% 45%",
   "/img/obras/camera-fachada.webp": "62% 55%",
   "/img/obras/camera-pergolado.webp": "30% 68%",
   "/img/obras/eletroposto.webp": "45% 35%",
-  "/img/obras/corredor-led.webp": "50% 40%",
-  "/img/obras/loja-trilho.webp": "50% 35%",
-  "/img/obras/sanca-led.webp": "50% 40%",
   "/img/obras/fechadura.webp": "32% 55%",
-  "/img/obras/balizadores.webp": "42% 60%",
   "/img/obras/responsavel.webp": "50% 35%",
 };
 

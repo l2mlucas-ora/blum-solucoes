@@ -489,3 +489,9 @@ a.chat-opt[data-wa] { border-color: var(--wa); background: rgba(37, 211, 102, .1
   .book-item { flex-basis: 84% }
   .book-seta { display: none }
 }
+
+/* Foto da van (página Sobre) */
+.sobre-van { position: relative; margin: 0 0 22px; border-radius: 22px; overflow: hidden; aspect-ratio: 21 / 9; background: var(--surface) }
+.sobre-van img { width: 100%; height: 100%; object-fit: cover }
+.sobre-van figcaption { position: absolute; left: 18px; bottom: 16px; padding: .45em 1em; border-radius: 99px; background: rgba(4, 9, 11, .7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; font-weight: 650; font-size: .9rem }
+@media (max-width: 560px) { .sobre-van { aspect-ratio: 4 / 3.2 } }
