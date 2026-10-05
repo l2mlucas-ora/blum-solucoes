@@ -7,7 +7,7 @@ import { obrasDo } from "../data/portfolio";
 import { servicoPorId, servicosEm, sv } from "../data/servicos";
 import { faqLd, serviceLd } from "../data/seo";
 import { site, waLink } from "../data/site";
-import { foco } from "../data/fotos";
+import { foco, srcset } from "../data/fotos";
 import { r, type Lang } from "../i18n/routes";
 
 interface Props { id: string; lang: Lang }
@@ -44,7 +44,7 @@ const T = {
         </div>
         <div class="svc-vis">
           {s.imagem
-            ? <img src={s.imagem} alt={`${s.nome} — ${T.alt}`} width="900" height="1100" style={foco(s.imagem)}>
+            ? <img src={s.imagem} srcset={srcset(s.imagem)} sizes="(max-width: 920px) 92vw, 520px" alt={`${s.nome} — ${T.alt}`} width="900" height="1100" fetchpriority="high" style={foco(s.imagem)}>
             : <span class="svc-vis-ic"><Icon name={s.icone} size={64} /></span>}
         </div>
       </div>

@@ -8,7 +8,7 @@ import { servicosEm } from "../data/servicos";
 import { faqGeral } from "../data/faq";
 import { faqLd } from "../data/seo";
 import { site, whatsapp, waLink, waPadrao, anosDeMercado } from "../data/site";
-import { foco } from "../data/fotos";
+import { foco, srcset } from "../data/fotos";
 import { r, type Lang } from "../i18n/routes";
 
 interface Props { lang: Lang }
@@ -112,7 +112,7 @@ const T = {
         </ul>
       </div>
       <div class="hero-vis">
-        <img src="/img/obras/igreja-depois.webp" alt={T.badge} width="1136" height="1200" fetchpriority="high" style={foco("/img/obras/igreja-depois.webp")}>
+        <img src="/img/obras/igreja-depois.webp" srcset={srcset("/img/obras/igreja-depois.webp")} sizes="(max-width: 920px) 92vw, 520px" alt={T.badge} width="1136" height="1200" fetchpriority="high" style={foco("/img/obras/igreja-depois.webp")}>
         <div class="hero-badge"><span class="dot" aria-hidden="true"></span><span><b>{T.badgeT}</b>{T.badge}</span></div>
       </div>
     </div>
@@ -173,8 +173,8 @@ const T = {
         <p class="lead">{T.obrasLead} <a class="grad-text" href={site.redes.instagram} target="_blank" rel="noopener">{site.redes.instagramUser}</a>.</p>
       </div>
       <div class="antes-depois reveal">
-        <figure><img src="/img/obras/igreja-antes.webp" alt={`${T.antes}: ${T.adH}`} width="1125" height="1200" loading="lazy" style={foco("/img/obras/igreja-antes.webp")}><figcaption>{T.antes}</figcaption></figure>
-        <figure><img src="/img/obras/igreja-depois.webp" alt={`${T.depois}: ${T.adH}`} width="1136" height="1200" loading="lazy" style={foco("/img/obras/igreja-depois.webp")}><figcaption>{T.depois}</figcaption></figure>
+        <figure><img src="/img/obras/igreja-antes.webp" srcset={srcset("/img/obras/igreja-antes.webp")} sizes="(max-width: 920px) 46vw, 380px" alt={`${T.antes}: ${T.adH}`} width="1125" height="1200" loading="lazy" style={foco("/img/obras/igreja-antes.webp")}><figcaption>{T.antes}</figcaption></figure>
+        <figure><img src="/img/obras/igreja-depois.webp" srcset={srcset("/img/obras/igreja-depois.webp")} sizes="(max-width: 920px) 46vw, 380px" alt={`${T.depois}: ${T.adH}`} width="1136" height="1200" loading="lazy" style={foco("/img/obras/igreja-depois.webp")}><figcaption>{T.depois}</figcaption></figure>
         <div class="ad-txt"><h3>{T.adH}</h3><p>{T.adP}</p></div>
       </div>
       <Book lang={lang} />

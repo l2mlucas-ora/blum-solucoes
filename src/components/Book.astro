@@ -6,7 +6,7 @@
 import Icon from "./Icon.astro";
 import { portfolio } from "../data/portfolio";
 import { servicoPorId } from "../data/servicos";
-import { foco } from "../data/fotos";
+import { foco, srcset } from "../data/fotos";
 import type { Lang } from "../i18n/routes";
 
 interface Props { lang: Lang; servico?: string }
@@ -44,7 +44,7 @@ const nomeCurto = (id: string) => CURTO[id]?.[lang] ?? servicoPorId[id].t[lang].
         {itens.map((o, i) => (
           <li class="book-item" data-servico={o.servico} aria-roledescription="slide">
             <figure>
-              <img src={o.src} alt={o.legenda[lang]} width="800" height="1000" loading={i < 3 ? "eager" : "lazy"} decoding="async" style={foco(o.src)}>
+              <img src={o.src} srcset={srcset(o.src)} sizes="(max-width: 560px) 84vw, (max-width: 920px) 46vw, 380px" alt={o.legenda[lang]} width="800" height="1000" loading="lazy" decoding="async" style={foco(o.src)}>
               <figcaption>
                 <span class="book-tag"><Icon name={servicoPorId[o.servico].icone} size={14} />{nomeCurto(o.servico)}</span>
                 {o.legenda[lang]}

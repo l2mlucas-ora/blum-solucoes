@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 import Icon from "../components/Icon.astro";
 import Credenciais from "../components/Credenciais.astro";
 import { site, waLink, waPadrao } from "../data/site";
-import { foco } from "../data/fotos";
+import { foco, srcset } from "../data/fotos";
 import { r, type Lang } from "../i18n/routes";
 
 interface Props { lang: Lang }
@@ -65,7 +65,7 @@ const T = {
   <section class="sec sec-alt">
     <div class="wrap">
       <div class="sec-head reveal"><span class="eyebrow">{T.comoEye}</span><h2>{T.comoH}</h2></div>
-      <figure class="sobre-van reveal"><img src="/img/obras/van-blum.webp" alt={T.vanAlt} width="960" height="1280" loading="lazy" style={foco("/img/obras/van-blum.webp")}><figcaption>{T.van}</figcaption></figure>
+      <figure class="sobre-van reveal"><img src="/img/obras/van-blum.webp" srcset={srcset("/img/obras/van-blum.webp")} sizes="(max-width: 1180px) 92vw, 1140px" alt={T.vanAlt} width="960" height="1280" loading="lazy" style={foco("/img/obras/van-blum.webp")}><figcaption>{T.van}</figcaption></figure>
       <div class="cards">
         {T.cards.map(([ic, h, p]) => <div class="card reveal"><span class="card-ic"><Icon name={ic} size={24} /></span><h3>{h}</h3><p>{p}</p></div>)}
       </div>

@@ -20,9 +20,14 @@ const arquivos = [];
 const jaTem = base.slice(1) + "/";
 const re = /((?:href|src|srcset|action)=\\?["']|url\(["']?)\/(?!\/)/g;
 let n = 0;
+// srcset tem várias URLs separadas por vírgula ("/a-640.webp 640w, /a.webp 1050w"): prefixa cada uma.
+const reSrcset = /srcset="([^"]*)"/g;
+const prefixar = (u) => (u.startsWith("/") && !u.startsWith("//") && !u.startsWith(base + "/") ? (n++, base + u) : u);
 for (const arq of arquivos) {
   const txt = readFileSync(arq, "utf8");
-  const novo = txt.replace(re, (m, attr, off) => (txt.startsWith(jaTem, off + m.length) ? m : (n++, `${attr}${base}/`)));
+  const novo = txt
+    .replace(reSrcset, (_, v) => `srcset="${v.split(",").map((parte) => parte.trim().replace(/^(\S+)/, (u) => prefixar(u))).join(", ")}"`)
+    .replace(re, (m, attr, off, s) => (attr.startsWith("srcset") || s.startsWith(jaTem, off + m.length) ? m : (n++, `${attr}${base}/`)));
   if (novo !== txt) writeFileSync(arq, novo);
 }
 console.log(`aplicar-base: ${n} caminhos prefixados com ${base} em ${arquivos.length} arquivos`);

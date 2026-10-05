@@ -36,7 +36,7 @@ export const ui = {
       ola: (n: string) => `Olá! Sou ${n}.`, preciso: (s: string) => `Preciso de ${s.toLowerCase()}.`, contato: "Contato pelo site",
     },
     cookies: {
-      regiao: "Aviso de cookies", texto: "Usamos cookies essenciais e, com a sua permissão, de medição de audiência.", saiba: "Saiba mais",
+      regiao: "Aviso de cookies", texto: "Usamos cookies essenciais e, com a sua permissão, de medição de audiência.", saiba: "Saiba mais sobre cookies",
       essenciais: "Só essenciais", aceitar: "Aceitar",
     },
   },
@@ -74,7 +74,7 @@ export const ui = {
       ola: (n: string) => `Hi! I'm ${n}.`, preciso: (s: string) => `I need ${s.toLowerCase()}.`, contato: "Website contact (EN)",
     },
     cookies: {
-      regiao: "Cookie notice", texto: "We use essential cookies and, with your permission, audience measurement cookies.", saiba: "Learn more",
+      regiao: "Cookie notice", texto: "We use essential cookies and, with your permission, audience measurement cookies.", saiba: "Learn more about cookies",
       essenciais: "Essential only", aceitar: "Accept",
     },
   },
@@ -112,7 +112,7 @@ export const ui = {
       ola: (n: string) => `¡Hola! Soy ${n}.`, preciso: (s: string) => `Necesito ${s.toLowerCase()}.`, contato: "Contacto del sitio (ES)",
     },
     cookies: {
-      regiao: "Aviso de cookies", texto: "Usamos cookies esenciales y, con tu permiso, de medición de audiencia.", saiba: "Más información",
+      regiao: "Aviso de cookies", texto: "Usamos cookies esenciales y, con tu permiso, de medición de audiencia.", saiba: "Más información sobre cookies",
       essenciais: "Solo esenciales", aceitar: "Aceptar",
     },
   },

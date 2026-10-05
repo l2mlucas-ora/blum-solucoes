@@ -17,3 +17,16 @@ const FOCO: Record<string, string> = {
 };
 
 export const foco = (src?: string) => `object-position:${(src && FOCO[src]) || "50% 50%"}`;
+
+/**
+ * Versões responsivas: para cada foto em /img/obras/x.webp existe x-640.webp (gerada junto com a otimização).
+ * O navegador baixa a menor que serve na tela — no celular, a de 640 px.
+ * Só roda no build (Astro), por isso pode olhar o disco.
+ */
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+export function srcset(src?: string): string | undefined {
+  if (!src || !src.startsWith("/img/obras/") || !src.endsWith(".webp")) return undefined;
+  const p640 = src.replace(/\.webp$/, "-640.webp");
+  return existsSync(join(process.cwd(), "public", p640)) ? `${p640} 640w, ${src} 1050w` : undefined;
+}

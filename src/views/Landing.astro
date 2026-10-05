@@ -6,7 +6,7 @@ import FaqList from "../components/FaqList.astro";
 import { servicoPorId, sv, servicosEm } from "../data/servicos";
 import { faqLd, serviceLd, type Faq } from "../data/seo";
 import { site, waLink } from "../data/site";
-import { foco } from "../data/fotos";
+import { foco, srcset } from "../data/fotos";
 import { r, type Lang } from "../i18n/routes";
 
 type Tipo = "eletricista" | "cameras" | "temporada";
@@ -115,7 +115,7 @@ const T = {
             <a class="btn btn-ghost btn-lg" href={waLink(`${T.ola} ${c.titulo.toLowerCase()}.`)} target="_blank" rel="noopener"><Icon name="whats" size={20} />WhatsApp</a>
           </div>
         </div>
-        <div class="svc-vis"><img src={c.imagem} alt={c.h1} width="900" height="1100" style={foco(c.imagem)}></div>
+        <div class="svc-vis"><img src={c.imagem} srcset={srcset(c.imagem)} sizes="(max-width: 920px) 92vw, 520px" alt={c.h1} width="900" height="1100" fetchpriority="high" style={foco(c.imagem)}></div>
       </div>
     </div>
   </section>

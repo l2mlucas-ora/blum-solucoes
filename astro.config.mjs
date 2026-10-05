@@ -12,7 +12,7 @@ const SITE = (process.env.SITE_URL || "https://blum-solucoes.pages.dev") + (proc
 export default defineConfig({
   site: SITE,
   trailingSlash: "always",
-  build: { format: "directory", inlineStylesheets: "auto" },
+  build: { format: "directory", inlineStylesheets: "always" },
   integrations: [
     sitemap({ filter: (page) => !page.includes("/404") && !/\/bio\/$/.test(page) }),
   ],
