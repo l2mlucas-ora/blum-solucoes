@@ -25,7 +25,9 @@ npm run build && npx wrangler pages dev dist --binding LEAD_DEBUG=1   # com /api
 | Valores do pré-orçamento (ligar ou desligar) | `src/data/precos.ts` |
 | Botões e campanhas da bio (`/bio/`, `/en/bio/`, `/es/bio/`, `?d=<id>`) | `src/data/bio.ts` |
 | Textos das páginas | `src/views/*.astro` (cada view tem o dicionário PT/EN/ES no topo) |
-| Fotos de obras | `public/img/obras/` (galeria em `src/views/Home.astro`) |
+| Fotos de obras (book/carrossel por serviço) | `src/data/portfolio.ts` + arquivos em `public/img/obras/` |
+| Ponto de foco das fotos no celular | `src/data/fotos.ts` |
+| Formação do responsável técnico | `src/data/site.ts` → `responsavel` |
 | Cores, fontes e componentes visuais | `src/styles/global.css` (tokens no topo) |
 | Logo | `public/img/logo-simbolo.svg`; originais e variantes em `brand/` |
 | Envio de leads (e-mail, webhook, anti-spam) | `functions/api/lead.ts` |
@@ -70,6 +72,14 @@ Todas são opcionais: sem nenhuma delas, o assistente e o formulário encaminham
 | `TURNSTILE_SECRET`, `PUBLIC_TURNSTILE_SITEKEY` | Anti-spam do Cloudflare Turnstile |
 | `PUBLIC_GA_ID` | Google Analytics 4, carregado só após o aceite de cookies |
 | `LEAD_DEBUG=1` | Somente em desenvolvimento: aceita o lead sem destino e só registra no log |
+
+## Fotos novas de obras
+
+1. Coloque os originais em `fotos-novas/`. **Não use `dist/`**: o build apaga e recria essa pasta.
+2. Cada foto é otimizada para `public/img/obras/<nome>.webp` (até 1200 px, WebP) e ganha uma linha em `src/data/portfolio.ts`, com o serviço e a legenda em PT/EN/ES.
+3. Se o corte no celular esconder o principal, ajuste o foco em `src/data/fotos.ts`.
+
+O book aparece na home, com filtros por serviço, e na página de cada serviço que tiver 2 fotos ou mais. Ele passa sozinho para o lado a cada ~4 s e pausa quando a pessoa toca, arrasta ou passa o mouse.
 
 ## Prévia para o cliente (GitHub Pages)
 

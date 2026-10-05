@@ -1,0 +1,64 @@
+---
+/* "Book" de obras: carrossel moderno com rolagem automática para o lado.
+   - Home: com filtros por serviço (servico omitido).
+   - Página de serviço: só as obras daquele serviço (servico="iluminacao" etc.).
+   Comportamento em src/scripts/book.ts (autoplay, pausa ao tocar/passar o mouse, setas, progresso). */
+import Icon from "./Icon.astro";
+import { portfolio } from "../data/portfolio";
+import { servicoPorId } from "../data/servicos";
+import { foco } from "../data/fotos";
+import type { Lang } from "../i18n/routes";
+
+interface Props { lang: Lang; servico?: string }
+const { lang, servico } = Astro.props;
+const itens = servico ? portfolio.filter((o) => o.servico === servico) : portfolio;
+const categorias = [...new Set(portfolio.map((o) => o.servico))];
+const T = {
+  pt: { todos: "Todos", ant: "Foto anterior", prox: "Próxima foto", pausar: "Pausar", rotulo: "Obras realizadas" },
+  en: { todos: "All", ant: "Previous photo", prox: "Next photo", pausar: "Pause", rotulo: "Our work" },
+  es: { todos: "Todos", ant: "Foto anterior", prox: "Foto siguiente", pausar: "Pausar", rotulo: "Trabajos realizados" },
+}[lang];
+const CURTO: Record<string, Record<Lang, string>> = {
+  "eletrica": { pt: "Elétrica", en: "Electrical", es: "Electricidad" },
+  "cameras-cftv": { pt: "Câmeras", en: "Cameras", es: "Cámaras" },
+  "controle-de-acesso": { pt: "Controle de acesso", en: "Access control", es: "Control de acceso" },
+  "seguranca-eletronica": { pt: "Segurança", en: "Security", es: "Seguridad" },
+  "iluminacao": { pt: "Iluminação", en: "Lighting", es: "Iluminación" },
+};
+const nomeCurto = (id: string) => CURTO[id]?.[lang] ?? servicoPorId[id].t[lang].nome;
+---
+{itens.length > 0 && (
+  <div class="book" data-book aria-roledescription="carousel" aria-label={T.rotulo}>
+    {!servico && (
+      <div class="book-filtros" role="group" aria-label={T.rotulo}>
+        <button type="button" class="book-chip" data-filtro="todos" aria-pressed="true">{T.todos}<span>{portfolio.length}</span></button>
+        {categorias.map((c) => (
+          <button type="button" class="book-chip" data-filtro={c} aria-pressed="false">
+            <Icon name={servicoPorId[c].icone} size={16} />{nomeCurto(c)}<span>{portfolio.filter((o) => o.servico === c).length}</span>
+          </button>
+        ))}
+      </div>
+    )}
+    <div class="book-palco">
+      <ul class="book-trilho" tabindex="0">
+        {itens.map((o, i) => (
+          <li class="book-item" data-servico={o.servico} aria-roledescription="slide">
+            <figure>
+              <img src={o.src} alt={o.legenda[lang]} width="800" height="1000" loading={i < 3 ? "eager" : "lazy"} decoding="async" style={foco(o.src)}>
+              <figcaption>
+                <span class="book-tag"><Icon name={servicoPorId[o.servico].icone} size={14} />{nomeCurto(o.servico)}</span>
+                {o.legenda[lang]}
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+      <button type="button" class="book-seta book-ant" data-dir="-1" aria-label={T.ant}><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5"/></svg></button>
+      <button type="button" class="book-seta book-prox" data-dir="1" aria-label={T.prox}><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5"/></svg></button>
+    </div>
+    <div class="book-progresso" aria-hidden="true"><span></span></div>
+  </div>
+)}
+<script>
+  import "../scripts/book.ts";
+</script>

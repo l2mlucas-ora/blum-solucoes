@@ -453,3 +453,39 @@ a.chat-opt[data-wa] { border-color: var(--wa); background: rgba(37, 211, 102, .1
 @media (max-width: 920px) { .cred { grid-template-columns: 1fr } .cred-lista ul { grid-template-columns: 1fr 1fr } }
 .cred-compacto .cred-lista ul { grid-template-columns: 1fr 1fr }
 @media (max-width: 560px) { .cred-lista ul, .cred-compacto .cred-lista ul { grid-template-columns: 1fr } .cred-selo { align-self: stretch } }
+
+/* ---------- book de obras (carrossel) ---------- */
+.book { display: flex; flex-direction: column; gap: 18px }
+.book-filtros { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; margin: 0 -20px; padding-inline: 20px }
+.book-filtros::-webkit-scrollbar { display: none }
+.book-chip { flex: none; display: inline-flex; align-items: center; gap: 7px; padding: .6em 1em; border-radius: 99px; border: 1px solid var(--line-hi); background: var(--surface); color: var(--text-hi); font-weight: 650; font-size: .9rem; cursor: pointer; transition: background .2s, border-color .2s, color .2s }
+.book-chip svg { color: var(--accent-text) }
+.book-chip span { font-size: .72rem; font-weight: 800; padding: .15em .55em; border-radius: 99px; background: var(--accent-soft); color: var(--accent-text) }
+.book-chip:hover { border-color: var(--accent-edge) }
+.book-chip[aria-pressed="true"] { background: var(--grad); border-color: transparent; color: #fff }
+.book-chip[aria-pressed="true"] svg, .book-chip[aria-pressed="true"] span { color: #fff }
+.book-chip[aria-pressed="true"] span { background: rgba(255, 255, 255, .22) }
+.book-palco { position: relative }
+.book-trilho { --gap: 16px; list-style: none; margin: 0; padding: 4px 0 6px; display: flex; gap: var(--gap); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; overscroll-behavior-x: contain }
+.book-trilho::-webkit-scrollbar { display: none }
+.book-trilho:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 20px }
+.book-item { flex: 0 0 calc((100% - 2 * var(--gap)) / 3); scroll-snap-align: start }
+.book-item[hidden] { display: none }
+.book-item figure { position: relative; margin: 0; aspect-ratio: 4 / 5; border-radius: 22px; overflow: hidden; background: var(--surface); box-shadow: 0 14px 40px rgba(0, 0, 0, .18) }
+.book-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease) }
+.book-item:hover img { transform: scale(1.05) }
+.book-item figcaption { position: absolute; inset: auto 0 0 0; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 46px 18px 18px; background: linear-gradient(transparent, rgba(4, 9, 11, .88)); color: #fff; font-weight: 650; font-size: .98rem; line-height: 1.35 }
+.book-tag { display: inline-flex; align-items: center; gap: 6px; padding: .3em .75em; border-radius: 99px; background: rgba(255, 255, 255, .16); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font: 700 .68rem/1.3 var(--ff-display); letter-spacing: .1em; text-transform: uppercase }
+.book-seta { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-hi); background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: var(--text-hi); cursor: pointer; box-shadow: var(--shadow); transition: transform .15s var(--ease) }
+.book-seta:hover { transform: translateY(-50%) scale(1.06) }
+.book-ant { left: -14px }
+.book-prox { right: -14px }
+.book-progresso { height: 3px; border-radius: 3px; background: var(--line); overflow: hidden }
+.book-progresso span { display: block; height: 100%; width: 8%; background: var(--grad); border-radius: inherit; transition: width .35s var(--ease) }
+@media (max-width: 920px) { .book-item { flex-basis: calc((100% - var(--gap)) / 2) } .book-ant { left: 6px } .book-prox { right: 6px } }
+@media (max-width: 560px) {
+  /* Celular: um card grande com a ponta do próximo aparecendo — convida a deslizar. */
+  .book-trilho { --gap: 12px; margin: 0 -20px; padding-inline: 20px; scroll-padding-inline: 20px }
+  .book-item { flex-basis: 84% }
+  .book-seta { display: none }
+}
