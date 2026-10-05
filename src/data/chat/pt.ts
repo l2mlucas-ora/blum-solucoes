@@ -43,7 +43,6 @@ export const flow: Flow = {
       { label: "Reforma / adequação", next: "ele_local", set: { tipo: "Reforma", chave: "ele_obra" } },
       { label: "Quadro, disjuntor ou DPS", next: "ele_local", set: { tipo: "Quadro de distribuição", chave: "ele_quadro" } },
       { label: "Tomadas, pontos ou chuveiro", next: "ele_local", set: { tipo: "Pontos / chuveiro", chave: "ele_ponto" } },
-      { label: "Carregador de carro elétrico", next: "ele_local", set: { tipo: "Carregador veicular", chave: "" } },
       { label: "Padrão de entrada Celesc", next: "ele_local", set: { tipo: "Padrão de entrada", chave: "ele_obra" } },
       { label: "Algo está com problema", next: "ele_problema", set: { tipo: "Manutenção / defeito", chave: "" } },
     ],

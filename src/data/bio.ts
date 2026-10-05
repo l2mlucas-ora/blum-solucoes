@@ -79,7 +79,7 @@ export const links: LinkBio[] = [
     sub: { pt: "Senha para cada hóspede", en: "A code for each guest", es: "Una clave para cada huésped" } },
   { id: "eletrica", icone: "raio", pagina: "servico:eletrica",
     label: { pt: "Elétrica residencial e comercial", en: "Electrical work", es: "Electricidad residencial y comercial" },
-    sub: { pt: "Obra, reforma e carregador veicular", en: "New builds, renovations and EV chargers", es: "Obra, reforma y cargador de auto eléctrico" } },
+    sub: { pt: "Obra, reforma e manutenção", en: "New builds, renovations and repairs", es: "Obra, reforma y mantenimiento" } },
   { id: "iluminacao", icone: "lampada", pagina: "servico:iluminacao",
     label: { pt: "Iluminação", en: "Lighting", es: "Iluminación" },
     sub: { pt: "Sancas, trilhos, jardim e fachada", en: "Coves, track lights, garden and facade", es: "Gargantas, rieles, jardín y fachada" } },

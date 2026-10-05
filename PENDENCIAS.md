@@ -5,7 +5,7 @@ O site já funciona, mas os itens abaixo dependem de material ou confirmação d
 ## Conteúdo e marca
 - [x] **Logo oficial** recebido em 03/10/2026. O símbolo foi vetorizado (`public/img/logo-simbolo.svg`, `public/favicon.svg`) e as variantes branco, grafite e colorido estão em `brand/`.
 - [x] **Fotos de obras** recebidas em 03/10/2026 (igreja antes/depois, perfil de LED, loja com trilhos, sanca, eletroposto, câmeras Intelbras), em `public/img/obras/`.
-- [ ] **Confirmar as legendas das obras.** Escrevi a partir das fotos: "Igreja em Garopaba", "loja de colchões", "eletroposto". A cidade e os detalhes podem estar errados. Se o cliente autorizar, dá para citar nomes (ex.: Eletroposto Nestor).
+- [ ] **Confirmar as legendas das obras.** Escrevi a partir das fotos: "Igreja em Garopaba", "loja de colchões", "eletroposto". A cidade e os detalhes podem estar errados. Se o cliente autorizar, dá para citar nomes (ex.: Eletroposto Nestor, onde a Blum instalou as câmeras).
 - [ ] **Foto do responsável em boa resolução** para a página Sobre. Hoje é um recorte de Reels (360 px), mostrado menor para não pixelar. Ainda vêm do Instagram também: o mapa (`img/ig/post3.jpg`).
 - [ ] **Depoimentos reais com autorização**, do destaque "Feedbacks". Os três da home são ilustrativos (`src/pages/index.astro` → `depoimentos`).
 - [ ] **Nome do responsável e a história da empresa** para a página Sobre (`src/pages/sobre.astro`).

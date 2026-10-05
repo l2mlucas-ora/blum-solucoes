@@ -22,7 +22,7 @@ export const portfolio: Obra[] = [
   o("academia-1", "iluminacao", "Academia: iluminação linear e destaques em LED", "Gym: linear lighting with LED accents", "Gimnasio: iluminación lineal y acentos LED"),
   o("motor-portao", "controle-de-acesso", "Automação de portão com motor e fotocélula", "Automatic gate with motor and photocell", "Portón automático con motor y fotocélula"),
   o("casa-entardecer", "iluminacao", "Casa com fachada e balizadores iluminados", "House with lit facade and path lights", "Casa con fachada y balizas iluminadas"),
-  o("eletroposto", "eletrica", "Eletroposto: carregador de carro elétrico", "EV charging station", "Electrolinera: cargador de auto eléctrico"),
+  o("eletroposto", "cameras-cftv", "Câmeras de segurança instaladas em eletroposto", "Security cameras installed at an EV charging station", "Cámaras de seguridad instaladas en una electrolinera"),
   o("escada-pedra-led", "iluminacao", "Escada com LED e parede de pedra em destaque", "Staircase with LED and accent-lit stone wall", "Escalera con LED y pared de piedra destacada"),
   o("rack-cftv", "cameras-cftv", "Rack de CFTV e rede organizado", "Organized CCTV and network rack", "Rack de CCTV y red ordenado"),
   o("cozinha-gourmet-pendentes", "iluminacao", "Espaço gourmet com pendentes circulares", "Gourmet area with ring pendants", "Espacio gourmet con colgantes circulares"),

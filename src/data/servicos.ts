@@ -28,14 +28,14 @@ export interface Servico {
 
 export const servicos: Servico[] = [
   {
-    id: "eletrica", icone: "raio", chat: "ele_tipo", imagem: "/img/obras/eletroposto.webp",
+    id: "eletrica", icone: "raio", chat: "ele_tipo", imagem: "/img/obras/tomada-externa.webp",
     t: {
       pt: {
         nome: "Elétrica residencial e comercial",
         curto: "Instalações, reformas, quadros e padrão de entrada, com segurança e acabamento caprichado.",
         titulo: "Eletricista em Garopaba e região",
         descricao: "Instalação e reforma elétrica residencial e comercial em Garopaba, Imbituba e região: quadro de distribuição, DPS, padrão de entrada Celesc, tomadas, chuveiro e manutenção.",
-        itens: ["Instalação elétrica completa para obra nova", "Reforma e adequação de instalações antigas", "Quadro de distribuição, disjuntores, DR e DPS", "Padrão de entrada e aumento de carga junto à Celesc", "Tomadas, interruptores, chuveiros e pontos novos", "Diagnóstico de curto, disjuntor caindo e choque", "Carregador de carro elétrico (residencial e eletroposto)"],
+        itens: ["Instalação elétrica completa para obra nova", "Reforma e adequação de instalações antigas", "Quadro de distribuição, disjuntores, DR e DPS", "Padrão de entrada e aumento de carga junto à Celesc", "Tomadas, interruptores, chuveiros e pontos novos", "Diagnóstico de curto, disjuntor caindo e choque"],
         quando: ["Construção ou reforma", "Disjuntor desarmando sem motivo", "Casa de temporada antes da alta estação", "Comércio que vai ampliar a carga"],
         faq: [
           { q: "Vocês fazem o padrão de entrada da Celesc?", a: "Sim. Montamos o padrão de entrada e acompanhamos o pedido de ligação ou aumento de carga junto à Celesc." },
@@ -48,7 +48,7 @@ export const servicos: Servico[] = [
         curto: "Wiring, renovations, breaker panels and utility hookups — safe, tidy and well finished.",
         titulo: "Electrician in Garopaba, Brazil",
         descricao: "Residential and commercial electrical installation and renovation in Garopaba, Imbituba and nearby: breaker panels, surge protection, Celesc utility hookup, outlets, electric showers and maintenance.",
-        itens: ["Complete wiring for new construction", "Renovation and upgrade of old installations", "Breaker panels, RCDs and surge protectors", "Utility service entrance and load increase with Celesc", "Outlets, switches, electric showers and new points", "Troubleshooting shorts, tripping breakers and shocks", "EV chargers (home and commercial charging stations)"],
+        itens: ["Complete wiring for new construction", "Renovation and upgrade of old installations", "Breaker panels, RCDs and surge protectors", "Utility service entrance and load increase with Celesc", "Outlets, switches, electric showers and new points", "Troubleshooting shorts, tripping breakers and shocks"],
         quando: ["Building or renovating", "Breaker tripping for no clear reason", "Vacation home before high season", "Business increasing its power load"],
         faq: [
           { q: "Do you handle the Celesc utility hookup?", a: "Yes. We install the service entrance and follow up the connection or load-increase request with Celesc, the local power company." },
@@ -61,7 +61,7 @@ export const servicos: Servico[] = [
         curto: "Instalaciones, reformas, tableros y acometida, con seguridad y buena terminación.",
         titulo: "Electricista en Garopaba y región",
         descricao: "Instalación y reforma eléctrica residencial y comercial en Garopaba, Imbituba y región: tablero eléctrico, protector contra sobretensiones, acometida de Celesc, enchufes, duchas eléctricas y mantenimiento.",
-        itens: ["Instalación eléctrica completa para obra nueva", "Reforma y adecuación de instalaciones antiguas", "Tablero eléctrico, disyuntores, diferencial y protector de sobretensión", "Acometida y aumento de carga ante Celesc", "Enchufes, interruptores, duchas y puntos nuevos", "Diagnóstico de cortocircuitos, disyuntor que salta y descargas", "Cargador de auto eléctrico (residencial y electrolinera)"],
+        itens: ["Instalación eléctrica completa para obra nueva", "Reforma y adecuación de instalaciones antiguas", "Tablero eléctrico, disyuntores, diferencial y protector de sobretensión", "Acometida y aumento de carga ante Celesc", "Enchufes, interruptores, duchas y puntos nuevos", "Diagnóstico de cortocircuitos, disyuntor que salta y descargas"],
         quando: ["Construcción o reforma", "Disyuntor que salta sin motivo", "Casa de temporada antes del verano", "Comercio que va a aumentar la carga"],
         faq: [
           { q: "¿Hacen la acometida de Celesc?", a: "Sí. Montamos la acometida y hacemos el seguimiento del pedido de conexión o aumento de carga ante Celesc, la compañía eléctrica local." },

@@ -40,7 +40,6 @@ export const flow: Flow = {
       { label: "Reforma / adecuación", next: "ele_local", set: { tipo: "Reforma", chave: "ele_obra" } },
       { label: "Tablero, disyuntor o protector", next: "ele_local", set: { tipo: "Tablero eléctrico", chave: "ele_quadro" } },
       { label: "Enchufes, puntos o ducha eléctrica", next: "ele_local", set: { tipo: "Puntos / ducha", chave: "ele_ponto" } },
-      { label: "Cargador de auto eléctrico", next: "ele_local", set: { tipo: "Cargador vehicular", chave: "" } },
       { label: "Acometida de Celesc", next: "ele_local", set: { tipo: "Acometida", chave: "ele_obra" } },
       { label: "Algo no funciona", next: "ele_problema", set: { tipo: "Reparación / falla", chave: "" } },
     ],

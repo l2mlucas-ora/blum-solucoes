@@ -40,7 +40,6 @@ export const flow: Flow = {
       { label: "Renovation / upgrade", next: "ele_local", set: { tipo: "Renovation", chave: "ele_obra" } },
       { label: "Breaker panel or surge protector", next: "ele_local", set: { tipo: "Breaker panel", chave: "ele_quadro" } },
       { label: "Outlets, points or electric shower", next: "ele_local", set: { tipo: "Points / shower", chave: "ele_ponto" } },
-      { label: "EV charger", next: "ele_local", set: { tipo: "EV charger", chave: "" } },
       { label: "Celesc utility hookup", next: "ele_local", set: { tipo: "Service entrance", chave: "ele_obra" } },
       { label: "Something isn't working", next: "ele_problema", set: { tipo: "Repair / fault", chave: "" } },
     ],
