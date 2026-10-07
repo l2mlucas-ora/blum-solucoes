@@ -37,8 +37,10 @@ const ld = [organizationLd(lang), ...(crumbs ? [breadcrumbLd(crumbs, lang)] : []
 const alt = noindex ? null : alternativas(Astro.url.pathname);
 const ga = import.meta.env.PUBLIC_GA_ID;
 const turnstile = import.meta.env.PUBLIC_TURNSTILE_SITEKEY;
-// Prévia (GitHub Pages): não indexa e não tem /api/lead — o assistente e o formulário vão direto ao WhatsApp.
+// PUBLIC_PREVIA=1 → página fora do Google (link de validação).
+// PUBLIC_SEM_API=1 → hospedagem sem /api/lead (GitHub Pages): assistente e formulário vão direto ao WhatsApp.
 const previa = import.meta.env.PUBLIC_PREVIA === "1";
+const semApi = previa || import.meta.env.PUBLIC_SEM_API === "1";
 ---
 <!doctype html>
 <html lang={htmlLang[lang]}>
@@ -48,7 +50,7 @@ const previa = import.meta.env.PUBLIC_PREVIA === "1";
 <title>{fullTitle}</title>
 <meta name="description" content={description}>
 {noindex || previa ? <meta name="robots" content={previa ? "noindex, nofollow" : "noindex, follow"}> : <link rel="canonical" href={canonical}>}
-{previa && <meta name="lead-off" content="1">}
+{semApi && <meta name="lead-off" content="1">}
 {alt && LANGS.map((l) => <link rel="alternate" hreflang={htmlLang[l]} href={abs(alt[l])}>)}
 {alt && <link rel="alternate" hreflang="x-default" href={abs(alt.pt)}>}
 <meta name="theme-color" content="#0B1012" media="(prefers-color-scheme: dark)">

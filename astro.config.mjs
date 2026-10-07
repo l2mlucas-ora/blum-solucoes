@@ -2,12 +2,12 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 /**
- * Endereço público. Prévia no GitHub Pages: SITE_URL=https://l2mlucas-ora.github.io BASE_PATH=/blum-solucoes
- * (definidos no workflow .github/workflows/previa.yml). Com o domínio próprio, basta SITE_URL — sem BASE_PATH.
- * O código usa caminhos começando em "/"; scripts/aplicar-base.mjs prefixa o BASE_PATH no HTML/JS/CSS gerado.
+ * Endereço público: https://blumsolucoes.com.br (publicado por scripts/publicar-site.mjs → npm run publicar).
+ * BASE_PATH só é usado se um dia o site voltar a rodar numa subpasta (ex.: prévia em usuario.github.io/projeto);
+ * nesse caso scripts/aplicar-base.mjs prefixa a subpasta no HTML/JS/CSS gerado.
  */
 // SITE inclui a subpasta da prévia; o Astro não usa `base` (os caminhos das páginas continuam começando em "/").
-const SITE = (process.env.SITE_URL || "https://blum-solucoes.pages.dev") + (process.env.BASE_PATH || "").replace(/\/$/, "");
+const SITE = (process.env.SITE_URL || "https://blumsolucoes.com.br") + (process.env.BASE_PATH || "").replace(/\/$/, "");
 
 export default defineConfig({
   site: SITE,

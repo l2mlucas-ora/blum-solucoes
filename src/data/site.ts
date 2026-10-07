@@ -22,9 +22,9 @@ export const waPadrao: T = {
 };
 
 export const site = {
-  // PENDENTE: domínio definitivo (ver MIGRACAO.md).
+  // Domínio oficial (desde 07/10/2026).
   // Vem do `site` do astro.config.mjs (inclui a subpasta da prévia no GitHub Pages).
-  url: String(import.meta.env?.SITE ?? "https://blum-solucoes.pages.dev").replace(/\/$/, ""),
+  url: String(import.meta.env?.SITE ?? "https://blumsolucoes.com.br").replace(/\/$/, ""),
   nome: "Blum Soluções",
   slogan: {
     pt: "Elétrica e segurança eletrônica em Garopaba e região",

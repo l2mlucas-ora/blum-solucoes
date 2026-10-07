@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "test": "node --test tests/lead.test.ts && esbuild tests/chatflow.check.ts --bundle --platform=node --format=esm --outfile=.proto/chatflow.check.mjs --log-level=warning && node .proto/chatflow.check.mjs && npm run build && npm run check:i18n",
     "check:i18n": "node scripts/check-i18n.mjs",
-    "previa": "node scripts/publicar-previa.mjs"
+    "publicar": "node scripts/publicar-site.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
