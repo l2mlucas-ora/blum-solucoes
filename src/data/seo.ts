@@ -26,6 +26,7 @@ export function organizationLd(lang: Lang = "pt") {
     image: `${site.url}/img/og-blum.jpg`,
     description: DESC[lang],
     telephone: `+${whatsapp.numero}`,
+    email: site.email,
     address: { "@type": "PostalAddress", addressLocality: site.endereco.cidade, addressRegion: site.endereco.uf, addressCountry: "BR" },
     openingHoursSpecification: [
       { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: site.horario.semana[0], closes: site.horario.semana[1] },

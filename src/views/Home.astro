@@ -229,6 +229,7 @@ const T = {
         <p class="lead">{T.ctLead}</p>
         <ul class="contato-lista">
           <li><Icon name="whats" size={20} /><a href={waLink(waPadrao[lang])} target="_blank" rel="noopener">{tel}</a></li>
+          <li><Icon name="email" size={20} /><a href={`mailto:${site.email}`}>{site.email}</a></li>
           <li><Icon name="insta" size={20} /><a href={site.redes.instagram} target="_blank" rel="noopener">{site.redes.instagramUser}</a></li>
           <li><Icon name="relogio" size={20} />{site.horario.texto[lang]}</li>
           <li><Icon name="pin" size={20} />{site.endereco.cidade} {T.regiaoUf} · {site.endereco.uf}</li>

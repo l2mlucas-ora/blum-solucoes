@@ -46,6 +46,8 @@ export const site = {
     semana: ["09:00", "17:00"],
     sabado: null as readonly [string, string] | null,
   },
+  // Confirmado pelo cliente em 07/10/2026 (como está na arte do Instagram, com "aa").
+  email: "fernaandoblum@gmail.com",
   redes: {
     instagram: "https://www.instagram.com/blum_solucoes/",
     instagramUser: "@blum_solucoes",

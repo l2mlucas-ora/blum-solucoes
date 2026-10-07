@@ -17,6 +17,7 @@ const ano = new Date().getFullYear();
       <p>{site.slogan[lang]}. {t.sobreTxt}</p>
       <p class="ftr-contato">
         <a href={waLink(waPadrao[lang])} target="_blank" rel="noopener"><Icon name="whats" size={18} />{lang === "pt" ? whatsapp.exibicao : whatsapp.internacional}</a>
+        <a href={`mailto:${site.email}`}><Icon name="email" size={18} />{site.email}</a>
         <a href={site.redes.instagram} target="_blank" rel="noopener"><Icon name="insta" size={18} />{site.redes.instagramUser}</a>
         <span><Icon name="relogio" size={18} />{site.horario.texto[lang]}</span>
       </p>
