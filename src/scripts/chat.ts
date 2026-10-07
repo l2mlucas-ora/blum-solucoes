@@ -155,11 +155,26 @@ async function faqResult() {
 }
 
 /* ---------- resumo e lead ---------- */
+/** Campos de cada bloco da mensagem do WhatsApp (os rótulos vêm do roteiro do idioma). */
+const BLOCOS: ["secPedido" | "secVisita", string[]][] = [
+  ["secPedido", ["servico", "tipo", "local", "qtd", "detalhe"]],
+  ["secVisita", ["cidade", "bairro", "dia", "periodo"]],
+];
+/** "ana maria" → "Ana Maria" (o nome aparece em negrito na saudação). */
+const nomeBonito = (n: string) => n.trim().replace(/\s+/g, " ").replace(/(^|\s)\p{Ll}/gu, (c) => c.toUpperCase());
+
+/** Mensagem pronta para o WhatsApp: saudação, resumo em blocos, dúvida e assinatura, com espaço entre as partes. */
 function resumo() {
   const st = s.state;
-  const linhas = Object.entries(rotulos).filter(([k]) => st[k]).map(([k, l]) => `${l}: ${st[k]}`);
-  const assunto = st.visita ? T.assuntoVisita : st.servico ? T.assuntoOrc(st.servico) : T.assuntoGeral;
-  return T.resumo(st.nome || "", assunto) + (linhas.length ? "\n" + linhas.join("\n") : "");
+  const intro = st.visita ? T.introVisita : st.servico ? T.introOrc(st.servico) : T.introGeral;
+  const partes = [`${T.saudacao(nomeBonito(st.nome || ""))}\n${intro}`];
+  for (const [titulo, campos] of BLOCOS) {
+    const linhas = campos.filter((k) => st[k]).map((k) => `• *${rotulos[k]}:* ${st[k]}`);
+    if (linhas.length) partes.push(`${T[titulo]}\n${linhas.join("\n")}`);
+  }
+  if (st.pergunta) partes.push(`${T.secDuvida}\n${st.pergunta}`);
+  partes.push(T.assinatura);
+  return partes.join("\n\n");
 }
 
 function leadConsent() {
