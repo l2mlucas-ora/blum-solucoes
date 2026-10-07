@@ -2,6 +2,8 @@
 import { roteiros, proximosDias } from "../src/data/chat";
 import { allFaq } from "../src/data/faq";
 import type { Lang } from "../src/i18n/routes";
+import { ui } from "../src/i18n/ui";
+import { waPadrao } from "../src/data/site";
 
 let erros = 0;
 const erro = (m: string) => { console.error("✗ " + m); erros++; };
@@ -48,5 +50,14 @@ for (const lang of ["pt", "en", "es"] as Lang[]) {
   if (faqs.length < 20) erro(`[${lang}] poucas FAQs (${faqs.length})`);
   console.log(`  ${lang}: ${Object.keys(flow).length} nós, ${faqs.length} FAQs · ${dias.join(" | ")}`);
 }
+// Mensagens que vão para o WhatsApp via wa.me: sem emoji fora do BMP (o WhatsApp Web/Desktop mostra "�").
+const naoBmp = /[\u{10000}-\u{10FFFF}]/u;
+for (const lang of ["pt", "en", "es"] as Lang[]) {
+  const c = ui[lang].chat, f = ui[lang].forms;
+  const textos = [c.saudacao("Ana"), c.introVisita, c.introOrc("Elétrica"), c.introGeral, c.secPedido, c.secVisita, c.secDuvida, c.assinatura,
+    f.ola("Ana"), f.preciso("Elétrica"), f.cidade("Garopaba"), f.assinatura, waPadrao[lang], ...Object.values(roteiros[lang].rotulos)];
+  for (const t of textos) if (naoBmp.test(t)) erro(`[${lang}] emoji na mensagem do WhatsApp (aparece como �): ${t}`);
+}
+
 console.log(erros ? `${erros} erro(s) nos roteiros` : "✓ roteiros do assistente ok nos três idiomas");
 process.exit(erros ? 1 : 0);

@@ -26,11 +26,11 @@ export const ui = {
       abrirWa: "Abrir WhatsApp agora",
       viaWa: "Pronto! Toque em “Abrir WhatsApp agora” para enviar a conversa para a equipe.",
       // Mensagem do WhatsApp (formatação do WhatsApp: *negrito*, _itálico_)
-      saudacao: (nome: string) => `Olá! 👋${nome ? ` Sou *${nome}*.` : ""}`,
+      saudacao: (nome: string) => `Olá!${nome ? ` Sou *${nome}*.` : ""}`,
       introVisita: "Vim pelo assistente do site e quero *agendar uma visita técnica*.",
       introOrc: (s: string) => `Vim pelo assistente do site e gostaria de um *orçamento de ${s.toLowerCase()}*.`,
       introGeral: "Vim pelo assistente do site.",
-      secPedido: "📋 *RESUMO DO PEDIDO*", secVisita: "📅 *VISITA TÉCNICA*", secDuvida: "💬 *DÚVIDA*",
+      secPedido: "*RESUMO DO PEDIDO*", secVisita: "*VISITA TÉCNICA*", secDuvida: "*DÚVIDA*",
       assinatura: "_Enviado pelo site da Blum Soluções_",
       visita: "Visita técnica", atendimento: "Atendimento",
       stop: "a o as os de da do das dos e em um uma para por com no na nos nas que se eu meu minha preciso como qual quais quanto voces vcs ter tem faz fazem sao",
@@ -38,7 +38,7 @@ export const ui = {
     forms: {
       enviando: "Enviando…", ok: "Recebido! Respondemos pelo WhatsApp no horário de atendimento.",
       falha: "Não conseguimos enviar agora.", offline: "Sem conexão. Tente de novo ou chame no WhatsApp.", porWa: "Enviar pelo WhatsApp", viaWa: "Pronto! Toque para enviar sua mensagem:",
-      ola: (n: string) => `Olá! 👋 Sou *${n}*.`, preciso: (s: string) => `Preciso de *${s.toLowerCase()}*.`, cidade: (c: string) => `📍 ${c}`, assinatura: "_Enviado pelo site da Blum Soluções_", contato: "Contato pelo site",
+      ola: (n: string) => `Olá! Sou *${n}*.`, preciso: (s: string) => `Preciso de *${s.toLowerCase()}*.`, cidade: (c: string) => `*${c}*`, assinatura: "_Enviado pelo site da Blum Soluções_", contato: "Contato pelo site",
     },
     cookies: {
       regiao: "Aviso de cookies", texto: "Usamos cookies essenciais e, com a sua permissão, de medição de audiência.", saiba: "Saiba mais sobre cookies",
@@ -68,11 +68,11 @@ export const ui = {
       falha: "I couldn't register this here. Message us on WhatsApp and the conversation will already be filled in.",
       abrirWa: "Open WhatsApp now",
       viaWa: "All set! Tap “Open WhatsApp now” to send this conversation to our team.",
-      saudacao: (nome: string) => `Hi! 👋${nome ? ` I'm *${nome}*.` : ""}`,
+      saudacao: (nome: string) => `Hi!${nome ? ` I'm *${nome}*.` : ""}`,
       introVisita: "I came through the website assistant (in English) and I'd like to *book an on-site visit*.",
       introOrc: (s: string) => `I came through the website assistant (in English) and I'd like a *quote for ${s.toLowerCase()}*.`,
       introGeral: "I came through the website assistant (in English).",
-      secPedido: "📋 *REQUEST SUMMARY*", secVisita: "📅 *ON-SITE VISIT*", secDuvida: "💬 *QUESTION*",
+      secPedido: "*REQUEST SUMMARY*", secVisita: "*ON-SITE VISIT*", secDuvida: "*QUESTION*",
       assinatura: "_Sent from the Blum Soluções website_",
       visita: "On-site visit", atendimento: "General enquiry",
       stop: "the a an of to in on for and or is are do does i my me we you your can how what which much many need have has with from",
@@ -80,7 +80,7 @@ export const ui = {
     forms: {
       enviando: "Sending…", ok: "Received! We'll reply on WhatsApp during business hours.",
       falha: "We couldn't send it right now.", offline: "No connection. Try again or message us on WhatsApp.", porWa: "Send via WhatsApp", viaWa: "All set! Tap to send your message:",
-      ola: (n: string) => `Hi! 👋 I'm *${n}*.`, preciso: (s: string) => `I need *${s.toLowerCase()}*.`, cidade: (c: string) => `📍 ${c}`, assinatura: "_Sent from the Blum Soluções website_", contato: "Website contact (EN)",
+      ola: (n: string) => `Hi! I'm *${n}*.`, preciso: (s: string) => `I need *${s.toLowerCase()}*.`, cidade: (c: string) => `*${c}*`, assinatura: "_Sent from the Blum Soluções website_", contato: "Website contact (EN)",
     },
     cookies: {
       regiao: "Cookie notice", texto: "We use essential cookies and, with your permission, audience measurement cookies.", saiba: "Learn more about cookies",
@@ -110,11 +110,11 @@ export const ui = {
       falha: "No pude registrarlo por aquí. Escríbenos por WhatsApp y la conversación ya va lista.",
       abrirWa: "Abrir WhatsApp ahora",
       viaWa: "¡Listo! Toca “Abrir WhatsApp ahora” para enviar la conversación al equipo.",
-      saudacao: (nome: string) => `¡Hola! 👋${nome ? ` Soy *${nome}*.` : ""}`,
+      saudacao: (nome: string) => `¡Hola!${nome ? ` Soy *${nome}*.` : ""}`,
       introVisita: "Vengo del asistente del sitio (en español) y quiero *agendar una visita técnica*.",
       introOrc: (s: string) => `Vengo del asistente del sitio (en español) y quiero un *presupuesto de ${s.toLowerCase()}*.`,
       introGeral: "Vengo del asistente del sitio (en español).",
-      secPedido: "📋 *RESUMEN DEL PEDIDO*", secVisita: "📅 *VISITA TÉCNICA*", secDuvida: "💬 *CONSULTA*",
+      secPedido: "*RESUMEN DEL PEDIDO*", secVisita: "*VISITA TÉCNICA*", secDuvida: "*CONSULTA*",
       assinatura: "_Enviado desde el sitio de Blum Soluções_",
       visita: "Visita técnica", atendimento: "Consulta general",
       stop: "el la los las de del y en un una para por con que se yo mi necesito como cual cuales cuanto ustedes tienen tiene hacen son es",
@@ -122,7 +122,7 @@ export const ui = {
     forms: {
       enviando: "Enviando…", ok: "¡Recibido! Te respondemos por WhatsApp en horario de atención.",
       falha: "No pudimos enviarlo ahora.", offline: "Sin conexión. Intenta de nuevo o escríbenos por WhatsApp.", porWa: "Enviar por WhatsApp", viaWa: "¡Listo! Toca para enviar tu mensaje:",
-      ola: (n: string) => `¡Hola! 👋 Soy *${n}*.`, preciso: (s: string) => `Necesito *${s.toLowerCase()}*.`, cidade: (c: string) => `📍 ${c}`, assinatura: "_Enviado desde el sitio de Blum Soluções_", contato: "Contacto del sitio (ES)",
+      ola: (n: string) => `¡Hola! Soy *${n}*.`, preciso: (s: string) => `Necesito *${s.toLowerCase()}*.`, cidade: (c: string) => `*${c}*`, assinatura: "_Enviado desde el sitio de Blum Soluções_", contato: "Contacto del sitio (ES)",
     },
     cookies: {
       regiao: "Aviso de cookies", texto: "Usamos cookies esenciales y, con tu permiso, de medición de audiencia.", saiba: "Más información sobre cookies",

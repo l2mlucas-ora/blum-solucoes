@@ -94,7 +94,7 @@ export function initForms() {
         f.reset();
       } else {
         // Mesmo padrão da mensagem do assistente: blocos separados por linha em branco.
-        const msg = [TF.ola(campos.nome || ""), campos["Serviço"] ? TF.preciso(campos["Serviço"]) : "", campos.Cidade ? TF.cidade(campos.Cidade) : "", campos.mensagem ? `💬 ${campos.mensagem}` : "", TF.assinatura].filter(Boolean).join("\n\n");
+        const msg = [TF.ola(campos.nome || ""), campos["Serviço"] ? TF.preciso(campos["Serviço"]) : "", campos.Cidade ? TF.cidade(campos.Cidade) : "", campos.mensagem || "", TF.assinatura].filter(Boolean).join("\n\n");
         out.textContent = (r.erro ?? TF.falha) + " ";
         const a = document.createElement("a");
         a.href = waLink(msg); a.target = "_blank"; a.rel = "noopener"; a.textContent = TF.porWa;
