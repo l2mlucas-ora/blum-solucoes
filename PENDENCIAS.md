@@ -33,5 +33,5 @@ O site já funciona, mas os itens abaixo dependem de material ou confirmação d
 ## Domínio e contas
 - [x] Prévia publicada em 03/10/2026: https://l2mlucas-ora.github.io/blum-solucoes/ (validação com o cliente).
 - [x] Domínio blumsolucoes.com.br registrado e site publicado nele (07/10/2026).
-- [ ] Configurar o DNS no Registro.br (registros A e CNAME — ver MIGRACAO.md) e, depois que propagar, ativar o HTTPS obrigatório no GitHub Pages.
+- [x] DNS configurado no Registro.br e HTTPS ativo (certificado do GitHub, renovação automática) — 07/10/2026.
 - [ ] Trocar o link da bio do Instagram de `wa.me/5548996631148` para `https://blumsolucoes.com.br/bio/`.
