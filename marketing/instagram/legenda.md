@@ -45,3 +45,34 @@ São mais de 10 anos atendendo Garopaba e região, agora também com um site mod
 - [ ] Trocar o link da bio do Instagram para a página de links do site: `https://l2mlucas-ora.github.io/blum-solucoes/bio/` por enquanto, e `https://<domínio>/bio/` depois.
 - [ ] Fixar o post no topo do perfil por 1–2 semanas.
 - [ ] Atenção: o link atual é a **prévia**, que fica fora do Google. Se o domínio for comprado antes do post, me avise que eu publico o site definitivo e atualizo os links das peças.
+
+---
+
+## Carrossel (6 slides) — `carrossel/carrossel-01.jpg` a `06.jpg`
+
+Para regerar: `python marketing/instagram/carrossel.py`.
+
+1. Capa: "Nosso novo site está no ar."
+2. Assistente de orçamento
+3. Visita técnica em 1 minuto
+4. Book de obras
+5. 3 idiomas
+6. Chamada: link na bio + WhatsApp
+
+**Legenda do carrossel:**
+
+Arrasta pro lado e conhece as novidades do nosso novo site 👉
+
+1️⃣ **Assistente de orçamento.** Responde na hora, a qualquer horário.
+2️⃣ **Visita técnica em 1 minuto.** Você escolhe o dia e o período.
+3️⃣ **Book de obras.** Nossos projetos reais, separados por serviço.
+4️⃣ **Português, inglês e espanhol.** Pra quem tem casa aqui e mora fora.
+
+Elétrica, câmeras, controle de acesso e iluminação em Garopaba e região, agora também na palma da mão. ⚡
+
+🔗 Link na bio
+📲 (48) 99663-1148
+
+#BlumSoluções #Garopaba #PraiaDoRosa #Imbituba #Eletricista #CâmerasDeSegurança #FechaduraDigital #Iluminação #SegurançaEletrônica #CasaDeTemporada #SantaCatarina
+
+**Sugestão de uso:** publique o carrossel no feed (ele mostra mais coisas e costuma alcançar mais pessoas que o post único) e use o post único + o story nos stories do mesmo dia.
