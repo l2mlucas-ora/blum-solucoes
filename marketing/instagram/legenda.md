@@ -31,7 +31,7 @@ São mais de 10 anos atendendo Garopaba e região, agora também com um site mod
 
 - **Adesivo de link** (na área livre embaixo, onde está "Toque no link e conheça"):
   - texto do adesivo: `CONHECER O SITE`
-  - endereço: https://l2mlucas-ora.github.io/blum-solucoes/bio/ (trocar pelo domínio definitivo quando comprar)
+  - endereço: https://blumsolucoes.com.br/bio/
 - **Sequência sugerida de stories:**
   1. Esta arte, com o adesivo de link.
   2. Gravação de tela do celular usando o assistente: tocar em "Orçamento rápido" → Câmeras → … (10–15 s).
@@ -42,9 +42,8 @@ São mais de 10 anos atendendo Garopaba e região, agora também com um site mod
 
 ## Antes de postar
 
-- [ ] Trocar o link da bio do Instagram para a página de links do site: `https://l2mlucas-ora.github.io/blum-solucoes/bio/` por enquanto, e `https://<domínio>/bio/` depois.
+- [ ] Trocar o link da bio do Instagram para `https://blumsolucoes.com.br/bio/`.
 - [ ] Fixar o post no topo do perfil por 1–2 semanas.
-- [ ] Atenção: o link atual é a **prévia**, que fica fora do Google. Se o domínio for comprado antes do post, me avise que eu publico o site definitivo e atualizo os links das peças.
 
 ---
 

@@ -1,6 +1,24 @@
-# Domínio próprio e contas
+# Domínio e hospedagem
 
-Hoje o site está em prévia no GitHub Pages (`npm run previa`, ver README). Quando a Blum comprar o domínio, o site definitivo vai para o Cloudflare Pages, que roda o `/api/lead`. Use uma conta Cloudflare da Blum ou sua, **não** a da Target.
+## Situação atual (07/10/2026)
+- **Domínio:** `blumsolucoes.com.br`, registrado no Registro.br, com o DNS do próprio Registro.br.
+- **Hospedagem:** GitHub Pages (repositório `l2mlucas-ora/blum-solucoes`, branch `gh-pages`). Para publicar, use `npm run publicar`.
+- **Pedidos:** vão direto ao WhatsApp, porque o GitHub Pages não roda o `/api/lead`.
+
+## DNS no Registro.br (zona do domínio)
+| Tipo | Nome | Valor |
+|---|---|---|
+| A | (vazio / @) | 185.199.108.153 |
+| A | (vazio / @) | 185.199.109.153 |
+| A | (vazio / @) | 185.199.110.153 |
+| A | (vazio / @) | 185.199.111.153 |
+| CNAME | www | l2mlucas-ora.github.io |
+
+Quando o domínio estiver respondendo, ative em GitHub → Settings → Pages a opção **Enforce HTTPS**. Pode levar até 24 h para o certificado sair.
+
+---
+
+# Opcional: migrar para o Cloudflare Pages (pedidos também por e-mail)
 
 ## 1. Registrar o domínio
 Registre o domínio no Registro.br (por exemplo, `blumsolucoes.com.br`) **no CNPJ ou CPF da Blum**, para que ele pertença ao cliente.

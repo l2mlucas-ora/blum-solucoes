@@ -81,23 +81,22 @@ Todas são opcionais: sem nenhuma delas, o assistente e o formulário encaminham
 
 O book aparece na home, com filtros por serviço, e na página de cada serviço que tiver 2 fotos ou mais. Ele passa sozinho para o lado a cada ~4 s e pausa quando a pessoa toca, arrasta ou passa o mouse.
 
-## Prévia para o cliente (GitHub Pages)
+## Publicar (site oficial)
 
-Link provisório: **https://l2mlucas-ora.github.io/blum-solucoes/** (bio: `…/blum-solucoes/bio/`).
+Site: **https://blumsolucoes.com.br** (bio: `/bio/`). Hospedado no GitHub Pages, com o domínio apontado no Registro.br.
 
-Para atualizar a prévia depois de uma mudança, faça o commit e rode:
+Depois de uma mudança, faça o commit e rode:
 
 ```bash
-npm run previa
+npm run publicar
 ```
 
-O comando roda os testes, gera o site na subpasta `/blum-solucoes/` e envia para a branch `gh-pages`. O GitHub publica em 1–2 minutos. Diferenças em relação ao site definitivo:
+O comando roda os testes, gera o site e envia para a branch `gh-pages` com o arquivo `CNAME` do domínio. O GitHub publica em 1–2 minutos.
 
-- **Fica fora do Google:** `noindex` em todas as páginas.
-- **Sem `/api/lead`:** o GitHub Pages não roda Functions. O assistente e o formulário levam o cliente direto ao WhatsApp, com a conversa pronta.
-- **Endereços na subpasta:** o código usa caminhos começando em `/`, e o `scripts/aplicar-base.mjs` prefixa `/blum-solucoes` no site gerado.
+- **Sem `/api/lead`:** o GitHub Pages não roda Functions, então o assistente e o formulário levam o cliente direto ao WhatsApp, com a conversa pronta (`PUBLIC_SEM_API=1`). Para receber os pedidos também por e-mail, migre para o Cloudflare Pages (ver MIGRACAO.md).
+- **`PUBLIC_PREVIA=1`** só serve para gerar uma versão de teste fora do Google.
 
-## Deploy
+## Deploy alternativo (Cloudflare Pages, com pedidos por e-mail)
 
 Cloudflare Pages conectado ao GitHub, com estas configurações:
 
