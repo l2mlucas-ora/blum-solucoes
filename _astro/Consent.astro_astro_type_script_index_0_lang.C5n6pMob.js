@@ -1,0 +1,1 @@
+import{r as e,t}from"./analytics.CPc59qsi.js";var n=document.getElementById(`consent`);!t()&&document.querySelector(`meta[name="ga-id"]`)&&(n.hidden=!1),n.querySelectorAll(`[data-consent]`).forEach(t=>t.addEventListener(`click`,()=>{e(t.dataset.consent),n.hidden=!0})),document.querySelectorAll(`[data-consent-open]`).forEach(e=>e.addEventListener(`click`,()=>{n.hidden=!1}));
