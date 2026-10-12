@@ -142,7 +142,7 @@ export const flow: Flow = {
         const f = s.chave ? faixa(s.chave, "pt") : null;
         return f
           ? `Pelo que você contou, a referência é ${f}. O valor final sai depois de ver o local — material e distância contam.`
-          : "Para te passar um valor justo, a gente precisa ver o local ou algumas fotos. O orçamento é sem compromisso.";
+          : `Para te passar um valor justo, a gente precisa ver o local. Você pode mandar fotos pelo WhatsApp ou agendar uma visita técnica, a partir de ${valorVisita("pt")}, que pode ser abatido do serviço.`;
       },
       "Como prefere seguir?",
     ],

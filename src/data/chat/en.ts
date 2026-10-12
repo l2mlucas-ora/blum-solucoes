@@ -139,7 +139,7 @@ export const flow: Flow = {
         const f = s.chave ? faixa(s.chave, "en") : null;
         return f
           ? `Based on what you told me, the reference price is ${f}. The final price comes after seeing the site — materials and distance matter.`
-          : "To give you a fair price we need to see the place or a few photos. The quote is free and with no obligation.";
+          : `To give you a fair price we need to see the place. You can send photos on WhatsApp or book an on-site visit, from ${valorVisita("en")}, which can be deducted from the job.`;
       },
       "How would you like to continue?",
     ],
