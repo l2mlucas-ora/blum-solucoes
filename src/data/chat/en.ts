@@ -2,13 +2,13 @@
  * Assistant script — ENGLISH. Same node ids as pt.ts (the test checks this).
  * Values saved in the state (service, place…) go to the Blum team in the WhatsApp summary, in English.
  */
-import { site, abertoAgora, whatsapp } from "../site";
+import { site, abertoAgora, whatsapp, valorVisita } from "../site";
 import { faixa } from "../precos";
 import { opts, proximosDias, type Flow, type Opt } from "./types";
 
 export const rotulos: Record<string, string> = {
   servico: "Service", tipo: "Type", local: "Property", qtd: "Quantity", detalhe: "Detail",
-  cidade: "Town", bairro: "Neighborhood/landmark", dia: "Preferred day", periodo: "Time of day", pergunta: "Question",
+  cidade: "Town", bairro: "Neighborhood/landmark", dia: "Preferred day", periodo: "Time of day", pergunta: "Question", taxa: "Visit fee",
 };
 
 const voltar: Opt = { label: "Back to start", next: "inicio" };
@@ -144,7 +144,7 @@ export const flow: Flow = {
       "How would you like to continue?",
     ],
     options: [
-      { label: "Book an on-site visit", next: "vis_cidade" },
+      { label: "Book an on-site visit", next: "vis_taxa" },
       { label: "Get a quote on WhatsApp", next: "lead" },
       { label: "I have a question first", next: "faq" },
       voltar,
@@ -155,7 +155,18 @@ export const flow: Flow = {
   vis_servico: {
     say: ["Let's schedule it. Which service is the visit for?"],
     options: ["Electrical", "Security cameras", "Access control", "Alarms and security", "Lighting", "More than one service"]
-      .map((l) => ({ label: l, next: "vis_cidade", set: { servico: l } })),
+      .map((l) => ({ label: l, next: "vis_taxa", set: { servico: l } })),
+  },
+  vis_taxa: {
+    say: [
+      () => `Before we schedule: the on-site visit has a minimum fee of ${valorVisita("en")}. Depending on the location the amount may vary, and it can be deducted from the job if you hire us.`,
+      "Shall we go ahead and schedule it?",
+    ],
+    options: [
+      { label: "Yes, let's schedule", next: "vis_cidade", set: { taxa: `Aware of the ${valorVisita("en")} minimum fee` } },
+      { label: "I'd rather get a quote on WhatsApp", next: "lead" },
+      { label: "I have a question", next: "faq" },
+    ],
   },
   vis_cidade: {
     enter: { visita: "sim" },

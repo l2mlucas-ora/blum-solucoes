@@ -4,14 +4,14 @@
  * visita técnica (`vis_*`); emergência; dúvidas (`faq`); lead. `faq_res` e `lead_envio` são preenchidos pelo widget.
  * en.ts e es.ts precisam ter exatamente os mesmos nós (o teste confere).
  */
-import { site, abertoAgora, whatsapp } from "../site";
+import { site, abertoAgora, whatsapp, valorVisita } from "../site";
 import { faixa } from "../precos";
 import { opts, proximosDias, type Flow, type Opt } from "./types";
 
 /** Rótulos do resumo enviado no WhatsApp e no lead (ordem = ordem no resumo). */
 export const rotulos: Record<string, string> = {
   servico: "Serviço", tipo: "Tipo", local: "Local", qtd: "Quantidade", detalhe: "Detalhe",
-  cidade: "Cidade", bairro: "Bairro/referência", dia: "Dia preferido", periodo: "Período", pergunta: "Dúvida",
+  cidade: "Cidade", bairro: "Bairro/referência", dia: "Dia preferido", periodo: "Período", pergunta: "Dúvida", taxa: "Valor da visita",
 };
 
 const voltar: Opt = { label: "Voltar ao início", next: "inicio" };
@@ -147,7 +147,7 @@ export const flow: Flow = {
       "Como prefere seguir?",
     ],
     options: [
-      { label: "Agendar visita técnica", next: "vis_cidade" },
+      { label: "Agendar visita técnica", next: "vis_taxa" },
       { label: "Receber orçamento no WhatsApp", next: "lead" },
       { label: "Tenho uma dúvida antes", next: "faq" },
       voltar,
@@ -158,7 +158,18 @@ export const flow: Flow = {
   vis_servico: {
     say: ["Vamos agendar. A visita é para qual serviço?"],
     options: ["Elétrica", "Câmeras de segurança", "Controle de acesso", "Segurança eletrônica", "Iluminação", "Mais de um serviço"]
-      .map((l) => ({ label: l, next: "vis_cidade", set: { servico: l } })),
+      .map((l) => ({ label: l, next: "vis_taxa", set: { servico: l } })),
+  },
+  vis_taxa: {
+    say: [
+      () => `Antes de agendar: a visita técnica tem valor mínimo de ${valorVisita("pt")}. Dependendo da localização, esse valor pode mudar, e ele pode ser abatido do serviço se você fechar com a gente.`,
+      "Podemos seguir com o agendamento?",
+    ],
+    options: [
+      { label: "Sim, vamos agendar", next: "vis_cidade", set: { taxa: `Ciente do valor mínimo de ${valorVisita("pt")}` } },
+      { label: "Prefiro orçamento pelo WhatsApp", next: "lead" },
+      { label: "Tenho uma dúvida", next: "faq" },
+    ],
   },
   vis_cidade: {
     enter: { visita: "sim" },

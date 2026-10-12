@@ -158,7 +158,7 @@ async function faqResult() {
 /** Campos de cada bloco da mensagem do WhatsApp (os rótulos vêm do roteiro do idioma). */
 const BLOCOS: ["secPedido" | "secVisita", string[]][] = [
   ["secPedido", ["servico", "tipo", "local", "qtd", "detalhe"]],
-  ["secVisita", ["cidade", "bairro", "dia", "periodo"]],
+  ["secVisita", ["cidade", "bairro", "dia", "periodo", "taxa"]],
 ];
 /** "ana maria" → "Ana Maria" (o nome aparece em negrito na saudação). */
 const nomeBonito = (n: string) => n.trim().replace(/\s+/g, " ").replace(/(^|\s)\p{Ll}/gu, (c) => c.toUpperCase());

@@ -73,6 +73,14 @@ export const responsavel = {
   ],
 } as const;
 
+/**
+ * Visita técnica: valor mínimo (confirmado pelo cliente em 12/10/2026). Pode mudar conforme a localização
+ * e pode ser abatido do serviço. Usado no assistente (nó vis_taxa) e no FAQ.
+ */
+export const visitaTecnica = { valorMinimo: 120 };
+export const valorVisita = (lang: Lang) =>
+  "R$ " + visitaTecnica.valorMinimo.toLocaleString(lang === "en" ? "en-US" : "pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
 /** URL absoluta de um caminho do site ("/en/" → "https://…/en/"), respeitando a subpasta da prévia. */
 export const abs = (path: string) => site.url + (path.startsWith("/") ? path : "/" + path);
 

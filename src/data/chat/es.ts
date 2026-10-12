@@ -2,13 +2,13 @@
  * Guion del asistente — ESPAÑOL. Mismos ids de nodo que pt.ts (el test lo verifica).
  * Los valores guardados (servicio, lugar…) llegan al equipo de Blum en el resumen de WhatsApp, en español.
  */
-import { site, abertoAgora, whatsapp } from "../site";
+import { site, abertoAgora, whatsapp, valorVisita } from "../site";
 import { faixa } from "../precos";
 import { opts, proximosDias, type Flow, type Opt } from "./types";
 
 export const rotulos: Record<string, string> = {
   servico: "Servicio", tipo: "Tipo", local: "Lugar", qtd: "Cantidad", detalhe: "Detalle",
-  cidade: "Ciudad", bairro: "Barrio/referencia", dia: "Día preferido", periodo: "Horario", pergunta: "Consulta",
+  cidade: "Ciudad", bairro: "Barrio/referencia", dia: "Día preferido", periodo: "Horario", pergunta: "Consulta", taxa: "Valor de la visita",
 };
 
 const voltar: Opt = { label: "Volver al inicio", next: "inicio" };
@@ -144,7 +144,7 @@ export const flow: Flow = {
       "¿Cómo prefieres seguir?",
     ],
     options: [
-      { label: "Agendar visita técnica", next: "vis_cidade" },
+      { label: "Agendar visita técnica", next: "vis_taxa" },
       { label: "Recibir presupuesto por WhatsApp", next: "lead" },
       { label: "Tengo una consulta antes", next: "faq" },
       voltar,
@@ -155,7 +155,18 @@ export const flow: Flow = {
   vis_servico: {
     say: ["Vamos a agendar. ¿Para qué servicio es la visita?"],
     options: ["Electricidad", "Cámaras de seguridad", "Control de acceso", "Alarmas y seguridad", "Iluminación", "Más de un servicio"]
-      .map((l) => ({ label: l, next: "vis_cidade", set: { servico: l } })),
+      .map((l) => ({ label: l, next: "vis_taxa", set: { servico: l } })),
+  },
+  vis_taxa: {
+    say: [
+      () => `Antes de agendar: la visita técnica tiene un valor mínimo de ${valorVisita("es")}. Según la ubicación el valor puede variar, y se puede descontar del servicio si nos contratas.`,
+      "¿Seguimos con el agendamiento?",
+    ],
+    options: [
+      { label: "Sí, agendemos", next: "vis_cidade", set: { taxa: `Al tanto del valor mínimo de ${valorVisita("es")}` } },
+      { label: "Prefiero presupuesto por WhatsApp", next: "lead" },
+      { label: "Tengo una consulta", next: "faq" },
+    ],
   },
   vis_cidade: {
     enter: { visita: "sim" },
